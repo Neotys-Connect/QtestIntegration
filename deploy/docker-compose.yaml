@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  NeoLoad-WebHookHandler:
+    container_name: WebHookHandler
+    image: hrexed/neoload_qtestresultsync:latest
+    ports:
+    - "8080:8080"
+    environment:
+    - NL_WEB_HOST=neoload.saas.neotys.com
+    - NL_API_TOKEN= TOKEN_TOBE_REPLACE
+    - NL_API_HOST=neoload-api.saas.neotys.com
+    - NL_API_PORT=443
+    - PORT=8080
+    - logging-level=DEBUG
+    - QTestApiHost= api.qasymphony.com
+    - QTestApiPort =443
+    - QtestAPiPath =/api
+    - QtestAPIToken =TOKEN_TOBE_REPLACE
+

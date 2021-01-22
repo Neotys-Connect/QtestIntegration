@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>qtest</artifactId>
+        <groupId>com.neotys.tricentis</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>qtestWebhookHandler</artifactId>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <tag>0.1</tag>
+        <dockerimage>docker.io/hrexed/neoload_qtestresultsync</dockerimage>
+        <NL_WEB_HOST>neoload.saas.com</NL_WEB_HOST>
+        <NL_API_HOST>neoload-api.saas.com</NL_API_HOST>
+        <NL_API_TOKEN>yourtoken</NL_API_TOKEN>
+        <port>8080</port>
+        <apiport>443</apiport>
+        <ssl>true</ssl>
+        <login>DEBUG</login>
+        <QTestApiHost>xray-staging.cloud.xpand-it.com</QTestApiHost>
+        <QTestApiPort>xray.cloud.xpand-it.com</QTestApiPort>
+        <QtestAPiPath>/api</QtestAPiPath>
+        <QtestAPIToken></QtestAPIToken>
+
+    </properties>
+    <dependencies>
+        
+
+        <dependency>
+            <groupId>com.neotys.ascode</groupId>
+            <artifactId>api-client-v3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.dongliu</groupId>
+            <artifactId>gson-java8-datatype</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.vertx/vertx-core -->
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-web</artifactId>
+            <version>3.8.3</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-web-client</artifactId>
+            <version>3.8.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.neotys.tricentis</groupId>
+            <artifactId>qtestApiClient</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.eclipse.jgit/org.eclipse.jgit -->
+        <dependency>
+            <groupId>org.eclipse.jgit</groupId>
+            <artifactId>org.eclipse.jgit</artifactId>
+            <version>5.3.1.201904271842-r</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.5</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <configuration>
+                    <from>
+                        <image>gcr.io/distroless/java:8</image>
+                    </from>
+                    <to>
+                        <image>${dockerimage}</image>
+
+                        <tags>
+                            <tag>${tag}</tag>
+                            <tag>latest</tag>
+                        </tags>
+                    </to>
+                    <allowInsecureRegistries>true</allowInsecureRegistries>
+                    <container>
+                        <ports>
+                            <port>${port}</port>
+                        </ports>
+                        <environment>
+                            <logging-level>${login}</logging-level>
+                            <NL_WEB_HOST>${NL_WEB_HOST}</NL_WEB_HOST>
+                            <NL_API_HOST>${NL_API_HOST}</NL_API_HOST>
+                            <NL_API_TOKEN>${NL_API_TOKEN}</NL_API_TOKEN>
+                            <NL_API_PORT>${apiport}</NL_API_PORT>
+                            <PORT>${port}</PORT>
+                            <ssl>${ssl}</ssl>
+                        </environment>
+                    </container>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
