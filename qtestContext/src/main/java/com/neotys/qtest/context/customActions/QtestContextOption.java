@@ -15,7 +15,7 @@ enum QtestContextOption implements Option {
             "Project name in UiPath Test Manager",
                     "Project name in UiPath Test Manager",
           NON_EMPTY),
-    TestCycle("TestCyle",Required,True,TEXT,"Test Cycle Name","Test Cylce name",NON_EMPTY),
+    TestCycle("TestCycle",Required,True,TEXT,"Test Cycle Name","Test Cylce name",NON_EMPTY),
     ReleaseName("ReleaseName",Required,True,TEXT,"Release Name", "Release Name",NON_EMPTY);
     private final String name;
     private final OptionalRequired optionalRequired;

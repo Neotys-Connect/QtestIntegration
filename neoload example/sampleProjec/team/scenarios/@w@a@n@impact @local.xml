@@ -116,7 +116,6 @@
                 monitorName="All/%BusyWorkers"
                 monitoredHostName="SampleServerNode02" scale="1.0" selected="true"/>
         </chart-description>
-        <empty-chart-description/>
     </charts-model-description>
     <!--****** END DASHBOARDS  ******-->
     <!--****** START DATA FILTERS  ******-->

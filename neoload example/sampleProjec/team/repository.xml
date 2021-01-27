@@ -122,40 +122,40 @@
     <threshold enabled="true" uid="f56be5e8-947b-4c9b-8dd9-9f028df1a6e0">
         <threshold-condition durationKind="SECONDS" durationNumber="15"
             operator="GREATER_THAN" severity="LOW" valueMax="Infinity" valueMin="80.0">
-            <threshold-comment language="fr">
-                <threshold-content>CPU du Contrôleur surchargé.</threshold-content>
-            </threshold-comment>
             <threshold-comment language="en">
                 <threshold-content>Controller CPU high.</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>CPU du Contrôleur surchargé.</threshold-content>
             </threshold-comment>
         </threshold-condition>
         <threshold-condition durationKind="SECONDS" durationNumber="15"
             operator="GREATER_THAN" severity="HIGH" valueMax="Infinity" valueMin="90.0">
-            <threshold-comment language="fr">
-                <threshold-content>CPU du Contrôleur surchargé.</threshold-content>
-            </threshold-comment>
             <threshold-comment language="en">
                 <threshold-content>Controller CPU high.</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>CPU du Contrôleur surchargé.</threshold-content>
             </threshold-comment>
         </threshold-condition>
     </threshold>
     <threshold enabled="true" uid="384b3d6b-48b7-4152-b590-592648da4f09">
         <threshold-condition durationKind="SECONDS" durationNumber="15"
             operator="GREATER_THAN" severity="LOW" valueMax="Infinity" valueMin="80.0">
-            <threshold-comment language="fr">
-                <threshold-content>Quantité de mémoire en cours d'utilisation élevée</threshold-content>
-            </threshold-comment>
             <threshold-comment language="en">
                 <threshold-content>Too high amount of memory used</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>Quantité de mémoire en cours d'utilisation élevée</threshold-content>
             </threshold-comment>
         </threshold-condition>
         <threshold-condition durationKind="SECONDS" durationNumber="15"
             operator="GREATER_THAN" severity="HIGH" valueMax="Infinity" valueMin="90.0">
-            <threshold-comment language="fr">
-                <threshold-content>Quantité de mémoire en cours d'utilisation élevée</threshold-content>
-            </threshold-comment>
             <threshold-comment language="en">
                 <threshold-content>Too high amount of memory used</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>Quantité de mémoire en cours d'utilisation élevée</threshold-content>
             </threshold-comment>
         </threshold-condition>
     </threshold>
@@ -163,11 +163,11 @@
         <threshold-condition durationKind="NB_OF_TIMES"
             durationNumber="1" operator="GREATER_THAN" severity="LOW"
             valueMax="Infinity" valueMin="1.0">
-            <threshold-comment language="fr">
-                <threshold-content>Injecteur  déconnecté &gt;= 1</threshold-content>
-            </threshold-comment>
             <threshold-comment language="en">
                 <threshold-content>Load Generator Diconnected &gt;=1</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>Injecteur  déconnecté &gt;= 1</threshold-content>
             </threshold-comment>
         </threshold-condition>
     </threshold>
@@ -232,60 +232,60 @@
     <threshold enabled="true" uid="6fc950cc-f95f-450a-9783-fac6298f1f44">
         <threshold-condition durationKind="SECONDS" durationNumber="15"
             operator="GREATER_THAN" severity="LOW" valueMax="Infinity" valueMin="80.0">
-            <threshold-comment language="fr">
-                <threshold-content>CPU de l'injecteur surchargé.</threshold-content>
-            </threshold-comment>
             <threshold-comment language="en">
                 <threshold-content>Load generator CPU high.</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>CPU de l'injecteur surchargé.</threshold-content>
             </threshold-comment>
         </threshold-condition>
         <threshold-condition durationKind="SECONDS" durationNumber="15"
             operator="GREATER_THAN" severity="HIGH" valueMax="Infinity" valueMin="90.0">
-            <threshold-comment language="fr">
-                <threshold-content>CPU de l'injecteur surchargé.</threshold-content>
-            </threshold-comment>
             <threshold-comment language="en">
                 <threshold-content>Load generator CPU high.</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>CPU de l'injecteur surchargé.</threshold-content>
             </threshold-comment>
         </threshold-condition>
     </threshold>
     <threshold enabled="true" uid="fa202a76-1e31-4050-80ec-c0f87cd7cc2e">
         <threshold-condition durationKind="SECONDS" durationNumber="15"
             operator="GREATER_THAN" severity="LOW" valueMax="Infinity" valueMin="80.0">
-            <threshold-comment language="fr">
-                <threshold-content>Quantité de mémoire en cours d'utilisation élevée</threshold-content>
-            </threshold-comment>
             <threshold-comment language="en">
                 <threshold-content>Too high amount of memory used</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>Quantité de mémoire en cours d'utilisation élevée</threshold-content>
             </threshold-comment>
         </threshold-condition>
         <threshold-condition durationKind="SECONDS" durationNumber="15"
             operator="GREATER_THAN" severity="HIGH" valueMax="Infinity" valueMin="90.0">
-            <threshold-comment language="fr">
-                <threshold-content>Quantité de mémoire en cours d'utilisation élevée</threshold-content>
-            </threshold-comment>
             <threshold-comment language="en">
                 <threshold-content>Too high amount of memory used</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>Quantité de mémoire en cours d'utilisation élevée</threshold-content>
             </threshold-comment>
         </threshold-condition>
     </threshold>
     <threshold enabled="true" uid="cc08b584-91e2-4e40-be7e-619acc631e61">
         <threshold-condition durationKind="SECONDS" durationNumber="15"
             operator="GREATER_THAN" severity="LOW" valueMax="Infinity" valueMin="70.0">
-            <threshold-comment language="fr">
-                <threshold-content>Quantité de tâches Jetty en cours d'exécution élevée</threshold-content>
-            </threshold-comment>
             <threshold-comment language="en">
                 <threshold-content>Too high amount of tasks queue by Jetty</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>Quantité de tâches Jetty en cours d'exécution élevée</threshold-content>
             </threshold-comment>
         </threshold-condition>
         <threshold-condition durationKind="SECONDS" durationNumber="15"
             operator="GREATER_THAN" severity="HIGH" valueMax="Infinity" valueMin="90.0">
-            <threshold-comment language="fr">
-                <threshold-content>Quantité de tâches Jetty en cours d'exécution élevée</threshold-content>
-            </threshold-comment>
             <threshold-comment language="en">
                 <threshold-content>Too high amount of tasks queue by Jetty</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>Quantité de tâches Jetty en cours d'exécution élevée</threshold-content>
             </threshold-comment>
         </threshold-condition>
     </threshold>
