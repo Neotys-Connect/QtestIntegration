@@ -1,0 +1,4 @@
+<http-server hostname="sampledemo.neotys.com" port="80" ssl="false"
+    uid="sampledemo.neotys.com" urlrewriting-argument-name=""
+    urlrewriting-enabled="false" urlrewriting-path-extension="false"
+    urlrewriting-path-not-equals="false" urlrewriting-path-separator=";"/>

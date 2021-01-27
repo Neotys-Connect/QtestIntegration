@@ -1,7 +1,17 @@
 package com.neotys.qtest.webhook.datamodel;
 
+import com.neotys.ascode.api.v3.client.ApiException;
+import com.neotys.ascode.api.v3.client.api.ResultsApi;
+import com.neotys.ascode.api.v3.client.model.SLAKPIDefinition;
+import com.neotys.qtest.api.client.model.AttachmentResource;
 import com.neotys.qtest.api.client.model.AutomationTestStepLog;
+import com.neotys.qtest.webhook.common.NeoLoadException;
+import org.threeten.bp.OffsetDateTime;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 public class TestStepLogResult {
@@ -26,8 +36,9 @@ public class TestStepLogResult {
     boolean hasError;
     String result;
     String comment;
+    NeoLoadAttachment neoLoadAttachment;
 
-    public TestStepLogResult( Integer orderNo, String actionType, String description, String expectedResult, String clipboardData, boolean hasError, String result, String comment) {
+    public TestStepLogResult(Integer orderNo, String actionType, String description, String expectedResult, String clipboardData, boolean hasError, String result, String comment, NeoLoadAttachment neoLoadAttachment) {
 
         this.orderNo = orderNo;
         this.actionType = actionType;
@@ -37,7 +48,9 @@ public class TestStepLogResult {
         this.hasError = hasError;
         this.result = result;
         this.comment = comment;
+        this.neoLoadAttachment=neoLoadAttachment;
     }
+
 
 
 
@@ -112,9 +125,28 @@ public class TestStepLogResult {
         automationTestStepLog.setDescription(this.description);
         automationTestStepLog.setActualResult(this.comment);
         automationTestStepLog.setOrder(this.orderNo);
-        automationTestStepLog.setStatus(this.result);
-
+        automationTestStepLog.setStatus(toQtestStatus());
+        if(neoLoadAttachment!=null) {
+            AttachmentResource attachmentResource = new AttachmentResource();
+            attachmentResource.setName(neoLoadAttachment.getTile());
+            attachmentResource.setCreatedDate(OffsetDateTime.now());
+            attachmentResource.setContentType(neoLoadAttachment.getContent_type());
+            attachmentResource.setData(neoLoadAttachment.getData());
+            automationTestStepLog.setAttachments(Arrays.asList(attachmentResource));
+        }
         return automationTestStepLog;
 
+    }
+
+    private String toQtestStatus()
+    {
+        if(this.result.equalsIgnoreCase("WARNING"))
+                return "PASS";
+        else {
+            if (!this.result.equalsIgnoreCase("PASSED"))
+                return "FAIL";
+            else
+                return "PASS";
+        }
     }
 }

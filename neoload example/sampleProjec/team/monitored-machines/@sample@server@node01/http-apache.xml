@@ -1,0 +1,71 @@
+<connection-apache interval="5000" name="http-apache"
+    server-name="sampledemo.neotys.com" server-port="0"
+    uid="45569e4d-f3c3-4203-8b75-b01aaa3ac23e" url="/server-status?snode=1&amp;auto">
+    <monitor-category name="All" short-display-name="All">
+        <monitor-apache callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="All/Total Accesses" path="All~"
+            sampling="0" short-display-name="Total Accesses"
+            statistic="Total Accesses" unit="">
+            <description>Total access count since the server started</description>
+        </monitor-apache>
+        <monitor-apache callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="All/Total kBytes" path="All~"
+            sampling="0" short-display-name="Total kBytes"
+            statistic="Total kBytes" unit="">
+            <description>Total volume delivered in bytes since the server started</description>
+        </monitor-apache>
+        <monitor-apache callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="All/Uptime" path="All~" sampling="0"
+            short-display-name="Uptime" statistic="Uptime" unit="">
+            <description>Time during which the server was running</description>
+        </monitor-apache>
+        <monitor-apache callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="All/ReqPerSec" path="All~"
+            sampling="0" short-display-name="ReqPerSec"
+            statistic="ReqPerSec" unit="">
+            <description>Average number of requests per second since the server started</description>
+        </monitor-apache>
+        <monitor-apache callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="All/BytesPerSec" path="All~"
+            sampling="0" short-display-name="BytesPerSec"
+            statistic="BytesPerSec" unit="">
+            <description>Average number of bytes delivered per second</description>
+        </monitor-apache>
+        <monitor-apache callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="All/BytesPerReq" path="All~"
+            sampling="0" short-display-name="BytesPerReq"
+            statistic="BytesPerReq" unit="">
+            <description>Average number of bytes per request</description>
+        </monitor-apache>
+        <monitor-apache callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="All/BusyWorkers" path="All~"
+            sampling="0" short-display-name="BusyWorkers"
+            statistic="BusyWorkers" unit="">
+            <description>Number of child processes actively processing requests</description>
+        </monitor-apache>
+        <monitor-apache callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="All/%BusyWorkers" path="All~"
+            sampling="0" short-display-name="%BusyWorkers"
+            statistic="%BusyWorkers"
+            threshold="e01aca1f-b304-4b49-9eb7-1e3c8322b8e5" unit="%">
+            <description>Percentage of the number of child processes actively processing requests</description>
+        </monitor-apache>
+        <monitor-apache callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="All/IdleWorkers" path="All~"
+            sampling="0" short-display-name="IdleWorkers"
+            statistic="IdleWorkers" unit="">
+            <description>Number of child processes idle</description>
+        </monitor-apache>
+    </monitor-category>
+    <threshold enabled="true" uid="e01aca1f-b304-4b49-9eb7-1e3c8322b8e5">
+        <threshold-condition durationKind="SECONDS" durationNumber="30"
+            operator="GREATER_THAN" severity="LOW" valueMax="Infinity" valueMin="90.0">
+            <threshold-comment language="en">
+                <threshold-content>When the percentage of child processes currently active and serving requests exceeds 90%, it indicates that the web server is under extreme load. Depending on the case (in particular where there is free memory available), we recommend you increase the number of Apache workers in order to be able to serve a greater number of requests.</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="fr">
+                <threshold-content>Lorsque le pourcentage de processus fils actuellement activés pour servir des requêtes dépasse 90%, cela signifie que le serveur web est soumis à une forte charge. Selon les cas (notamment s'il reste de la mémoire libre), il est conseillé d'augmenter le nombre de workers apache, afin de pouvoir servir un plus grand nombre de requêtes.</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+    </threshold>
+</connection-apache>

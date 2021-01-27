@@ -66,9 +66,9 @@ public class WebHookReceiver extends AbstractVerticle {
             loadLogger.debug("Received Webhook with testid  " + testid + "worspaceid  "+workspaceid);
 
             //----is test id currently processed?-----
-            if (!testidStringStringHashMap.containsKey(testid)) {
-                loadLogger.error("The test execution has not be done in UIpath");
-                routingContext.response().setStatusCode(510).end("Technical error - there is no test lauched in uipath");
+            if (testidStringStringHashMap.containsKey(testid)) {
+                loadLogger.info("The test execution is currently in process");
+                routingContext.response().setStatusCode(200).end("This test result is currently in process of beein synchronized in Qtest");
             } else {
 
                 try {

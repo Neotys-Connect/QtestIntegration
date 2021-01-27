@@ -1,0 +1,434 @@
+<!--****** MONITORED HOSTS ******-->
+<monitored-host-system host-name="" load-generator="false" uid="NeoLoad">
+    <embedded-action>75e96275-9182-473e-a8e7-be11130e397b</embedded-action>
+</monitored-host-system>
+<monitored-host-system host-name="localhost:7100" load-generator="true" uid="LG localhost:7100">
+    <embedded-action>e44ea865-e0bb-405f-9ef8-e5b9166a0dea</embedded-action>
+</monitored-host-system>
+<!--****** END MONITORED HOSTS ******-->
+<!--****** MONITOR CONNECTIONS ******-->
+<connection-system interval="1000" name="NeoLoad" server-port="0" uid="75e96275-9182-473e-a8e7-be11130e397b">
+    <monitor-category name="Default" short-display-name="Default">
+        <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="UserLoad" sampling="0" unit=""/>
+        <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="throughput" sampling="0" unit="Mb/s"/>
+        <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="Alerts" sampling="0" unit=""/>
+        <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="CriticalAlerts" sampling="0" unit=""/>
+        <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="WarningAlerts" sampling="0" unit=""/>
+        <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="cpu" sampling="0"
+            threshold="f56be5e8-947b-4c9b-8dd9-9f028df1a6e0" unit="%"/>
+        <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="memory" sampling="0"
+            threshold="384b3d6b-48b7-4152-b590-592648da4f09" unit="%"/>
+        <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="threadcount" sampling="0" unit=""/>
+        <monitor-category name="Load Generator Connections" short-display-name="Load Generator Connections">
+            <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+                format="NUMBER" name="connectedlg" sampling="0" unit=""/>
+            <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+                format="NUMBER" name="totallgdisconnections"
+                sampling="0"
+                threshold="18bc69f5-f527-4ddb-9b14-1cb3dbc9253a" unit=""/>
+            <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+                format="NUMBER" name="totallgreconnections" sampling="0" unit=""/>
+        </monitor-category>
+        <monitor-category name="Network" short-display-name="Network">
+            <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+                format="NUMBER" name="otcp.NeoLoad" sampling="0" unit=""/>
+            <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+                format="NUMBER" name="tcp.NeoLoad" sampling="0" unit=""/>
+            <monitor-category name="wlp2s0 (wlp2s0)" short-display-name="wlp2s0 (wlp2s0)">
+                <monitor-wrapped-statistic callTime="ON_BENCH"
+                    computing="0" format="NUMBER"
+                    name="ibytesperinterface~NeoLoad~wlp2s0"
+                    sampling="0" unit="Mb/s"/>
+                <monitor-wrapped-statistic callTime="ON_BENCH"
+                    computing="0" format="NUMBER"
+                    name="obytesperinterface~NeoLoad~wlp2s0"
+                    sampling="0" unit="Mb/s"/>
+            </monitor-category>
+        </monitor-category>
+        <monitor-category name="NeoLoad Web" short-display-name="NeoLoad Web">
+            <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+                format="NUMBER" name="nlwebdownload" sampling="0" unit=""/>
+            <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+                format="NUMBER" name="nlwebupload" sampling="0" unit=""/>
+        </monitor-category>
+        <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="SapUserLoad" sampling="0" unit=""/>
+        <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="CitrixUserLoad" sampling="0" unit=""/>
+    </monitor-category>
+    <monitor-category name="Zones" short-display-name="Zones">
+        <monitor-category name="Default zone" short-display-name="Default zone">
+            <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+                format="NUMBER" name="zoneuserload~Default zone"
+                sampling="0" unit=""/>
+            <monitor-category name="MyPopulationSmallCities" short-display-name="MyPopulationSmallCities">
+                <monitor-wrapped-statistic callTime="ON_BENCH"
+                    computing="0" format="NUMBER"
+                    name="zoneuserloadperpopulation~Default zone~MyPopulationSmallCities"
+                    sampling="0" unit=""/>
+                <monitor-category name="MyiPhoneUser_Create_report" short-display-name="MyiPhoneUser_Create_report">
+                    <monitor-wrapped-statistic callTime="ON_BENCH"
+                        computing="0" format="NUMBER"
+                        name="zoneuserloadperpopulation~Default zone~MyPopulationSmallCities~MyiPhoneUser_Create_report"
+                        sampling="0" unit=""/>
+                </monitor-category>
+                <monitor-category name="BrowserUser_Create_report" short-display-name="BrowserUser_Create_report">
+                    <monitor-wrapped-statistic callTime="ON_BENCH"
+                        computing="0" format="NUMBER"
+                        name="zoneuserloadperpopulation~Default zone~MyPopulationSmallCities~BrowserUser_Create_report"
+                        sampling="0" unit=""/>
+                </monitor-category>
+            </monitor-category>
+            <monitor-category name="MyPopulationBigCities" short-display-name="MyPopulationBigCities">
+                <monitor-wrapped-statistic callTime="ON_BENCH"
+                    computing="0" format="NUMBER"
+                    name="zoneuserloadperpopulation~Default zone~MyPopulationBigCities"
+                    sampling="0" unit=""/>
+                <monitor-category name="MyiPhoneUser_Create_report" short-display-name="MyiPhoneUser_Create_report">
+                    <monitor-wrapped-statistic callTime="ON_BENCH"
+                        computing="0" format="NUMBER"
+                        name="zoneuserloadperpopulation~Default zone~MyPopulationBigCities~MyiPhoneUser_Create_report"
+                        sampling="0" unit=""/>
+                </monitor-category>
+                <monitor-category name="BrowserUser_Create_report" short-display-name="BrowserUser_Create_report">
+                    <monitor-wrapped-statistic callTime="ON_BENCH"
+                        computing="0" format="NUMBER"
+                        name="zoneuserloadperpopulation~Default zone~MyPopulationBigCities~BrowserUser_Create_report"
+                        sampling="0" unit=""/>
+                </monitor-category>
+            </monitor-category>
+            <monitor-category name="qtest" short-display-name="qtest">
+                <monitor-wrapped-statistic callTime="ON_BENCH"
+                    computing="0" format="NUMBER"
+                    name="zoneuserloadperpopulation~Default zone~qtest"
+                    sampling="0" unit=""/>
+                <monitor-category name="qtest" short-display-name="qtest">
+                    <monitor-wrapped-statistic callTime="ON_BENCH"
+                        computing="0" format="NUMBER"
+                        name="zoneuserloadperpopulation~Default zone~qtest~qtest"
+                        sampling="0" unit=""/>
+                </monitor-category>
+            </monitor-category>
+        </monitor-category>
+    </monitor-category>
+    <threshold enabled="true" uid="f56be5e8-947b-4c9b-8dd9-9f028df1a6e0">
+        <threshold-condition durationKind="SECONDS" durationNumber="15"
+            operator="GREATER_THAN" severity="LOW" valueMax="Infinity" valueMin="80.0">
+            <threshold-comment language="fr">
+                <threshold-content>CPU du Contrôleur surchargé.</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="en">
+                <threshold-content>Controller CPU high.</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+        <threshold-condition durationKind="SECONDS" durationNumber="15"
+            operator="GREATER_THAN" severity="HIGH" valueMax="Infinity" valueMin="90.0">
+            <threshold-comment language="fr">
+                <threshold-content>CPU du Contrôleur surchargé.</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="en">
+                <threshold-content>Controller CPU high.</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+    </threshold>
+    <threshold enabled="true" uid="384b3d6b-48b7-4152-b590-592648da4f09">
+        <threshold-condition durationKind="SECONDS" durationNumber="15"
+            operator="GREATER_THAN" severity="LOW" valueMax="Infinity" valueMin="80.0">
+            <threshold-comment language="fr">
+                <threshold-content>Quantité de mémoire en cours d'utilisation élevée</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="en">
+                <threshold-content>Too high amount of memory used</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+        <threshold-condition durationKind="SECONDS" durationNumber="15"
+            operator="GREATER_THAN" severity="HIGH" valueMax="Infinity" valueMin="90.0">
+            <threshold-comment language="fr">
+                <threshold-content>Quantité de mémoire en cours d'utilisation élevée</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="en">
+                <threshold-content>Too high amount of memory used</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+    </threshold>
+    <threshold enabled="true" uid="18bc69f5-f527-4ddb-9b14-1cb3dbc9253a">
+        <threshold-condition durationKind="NB_OF_TIMES"
+            durationNumber="1" operator="GREATER_THAN" severity="LOW"
+            valueMax="Infinity" valueMin="1.0">
+            <threshold-comment language="fr">
+                <threshold-content>Injecteur  déconnecté &gt;= 1</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="en">
+                <threshold-content>Load Generator Diconnected &gt;=1</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+    </threshold>
+</connection-system>
+<connection-system interval="1000" name="NeoLoad" server-port="0" uid="e44ea865-e0bb-405f-9ef8-e5b9166a0dea">
+    <monitor-category name="Default" short-display-name="Default">
+        <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="lgcpu.localhost:7100" sampling="0"
+            threshold="6fc950cc-f95f-450a-9783-fac6298f1f44" unit="%"/>
+        <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="lgmemory.localhost:7100" sampling="0"
+            threshold="fa202a76-1e31-4050-80ec-c0f87cd7cc2e" unit="%"/>
+        <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="lgthroughput.localhost:7100"
+            sampling="0" unit="Mb/s"/>
+        <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+            format="NUMBER"
+            name="lguserloadperpopulation~localhost:7100" sampling="0" unit=""/>
+        <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+            format="NUMBER" name="lgthreadcount.localhost:7100"
+            sampling="0" unit=""/>
+        <monitor-category name="Http client" short-display-name="Http client">
+            <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+                format="NUMBER"
+                name="lg.jetty.httpclient.threadpool.used.localhost:7100"
+                sampling="0" unit="%"/>
+            <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+                format="NUMBER"
+                name="lg.jetty.httpclient.taskpool.used.localhost:7100"
+                sampling="0"
+                threshold="cc08b584-91e2-4e40-be7e-619acc631e61" unit="%"/>
+        </monitor-category>
+        <monitor-category name="Controller Connection" short-display-name="Controller Connection">
+            <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+                format="NUMBER" name="lgdisconnections.localhost:7100"
+                sampling="0" unit=""/>
+            <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+                format="NUMBER" name="lgreconnections.localhost:7100"
+                sampling="0" unit=""/>
+            <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+                format="NUMBER" name="lgping.localhost:7100"
+                sampling="0" unit="ms"/>
+        </monitor-category>
+        <monitor-category name="Network" short-display-name="Network">
+            <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+                format="NUMBER" name="lgotcp.localhost:7100"
+                sampling="0" unit=""/>
+            <monitor-wrapped-statistic callTime="ON_BENCH" computing="0"
+                format="NUMBER" name="lgtcp.localhost:7100" sampling="0" unit=""/>
+            <monitor-category name="wlp2s0 (wlp2s0)" short-display-name="wlp2s0 (wlp2s0)">
+                <monitor-wrapped-statistic callTime="ON_BENCH"
+                    computing="0" format="NUMBER"
+                    name="lgibytesperinterface~localhost:7100~wlp2s0"
+                    sampling="0" unit="Mb/s"/>
+                <monitor-wrapped-statistic callTime="ON_BENCH"
+                    computing="0" format="NUMBER"
+                    name="lgobytesperinterface~localhost:7100~wlp2s0"
+                    sampling="0" unit="Mb/s"/>
+            </monitor-category>
+        </monitor-category>
+    </monitor-category>
+    <threshold enabled="true" uid="6fc950cc-f95f-450a-9783-fac6298f1f44">
+        <threshold-condition durationKind="SECONDS" durationNumber="15"
+            operator="GREATER_THAN" severity="LOW" valueMax="Infinity" valueMin="80.0">
+            <threshold-comment language="fr">
+                <threshold-content>CPU de l'injecteur surchargé.</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="en">
+                <threshold-content>Load generator CPU high.</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+        <threshold-condition durationKind="SECONDS" durationNumber="15"
+            operator="GREATER_THAN" severity="HIGH" valueMax="Infinity" valueMin="90.0">
+            <threshold-comment language="fr">
+                <threshold-content>CPU de l'injecteur surchargé.</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="en">
+                <threshold-content>Load generator CPU high.</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+    </threshold>
+    <threshold enabled="true" uid="fa202a76-1e31-4050-80ec-c0f87cd7cc2e">
+        <threshold-condition durationKind="SECONDS" durationNumber="15"
+            operator="GREATER_THAN" severity="LOW" valueMax="Infinity" valueMin="80.0">
+            <threshold-comment language="fr">
+                <threshold-content>Quantité de mémoire en cours d'utilisation élevée</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="en">
+                <threshold-content>Too high amount of memory used</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+        <threshold-condition durationKind="SECONDS" durationNumber="15"
+            operator="GREATER_THAN" severity="HIGH" valueMax="Infinity" valueMin="90.0">
+            <threshold-comment language="fr">
+                <threshold-content>Quantité de mémoire en cours d'utilisation élevée</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="en">
+                <threshold-content>Too high amount of memory used</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+    </threshold>
+    <threshold enabled="true" uid="cc08b584-91e2-4e40-be7e-619acc631e61">
+        <threshold-condition durationKind="SECONDS" durationNumber="15"
+            operator="GREATER_THAN" severity="LOW" valueMax="Infinity" valueMin="70.0">
+            <threshold-comment language="fr">
+                <threshold-content>Quantité de tâches Jetty en cours d'exécution élevée</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="en">
+                <threshold-content>Too high amount of tasks queue by Jetty</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+        <threshold-condition durationKind="SECONDS" durationNumber="15"
+            operator="GREATER_THAN" severity="HIGH" valueMax="Infinity" valueMin="90.0">
+            <threshold-comment language="fr">
+                <threshold-content>Quantité de tâches Jetty en cours d'exécution élevée</threshold-content>
+            </threshold-comment>
+            <threshold-comment language="en">
+                <threshold-content>Too high amount of tasks queue by Jetty</threshold-content>
+            </threshold-comment>
+        </threshold-condition>
+    </threshold>
+</connection-system>
+<!--****** END MONITOR CONNECTIONS ******-->
+<!--****** DASHBOARDS  ******-->
+<dashboards defaultDashboardUid="conf1 vs conf2"/>
+<charts-model-description name="conf1 vs conf2">
+    <chart-description autoRange="true"
+        chart-description-type="chart-description-type" description=""
+        domainMarkerVisible="true" granularityLevel="0"
+        historyState="FULL" includeInReport="false"
+        rangeMarkerVisible="true" timeOrigin="RELATIVE"
+        title="Home - Average duration Config1" typeName="CLASSIC">
+        <action-curve-description
+            actionUid="f18b10f8-9f51-44ac-b17d-22eed776ab27"
+            benchUid="6546116e-56cf-435a-acdc-dbbc7020254e"
+            color="153,153,0" dashed="false" populationName=""
+            scale="1.0" selected="true"
+            statisticName="result.average.duration"
+            virtualUserUid="BrowserUser_Create_report" zoneName=""/>
+    </chart-description>
+    <chart-description autoRange="true"
+        chart-description-type="chart-description-type" description=""
+        domainMarkerVisible="true" granularityLevel="0"
+        historyState="XMIN" includeInReport="false"
+        rangeMarkerVisible="true" timeOrigin="RELATIVE"
+        title="Home - Average duration Config 2" typeName="CLASSIC">
+        <action-curve-description
+            actionUid="f18b10f8-9f51-44ac-b17d-22eed776ab27"
+            benchUid="12cbc0b0-5ffb-4001-85ce-742cd639a2c0"
+            color="153,153,0" dashed="false" populationName=""
+            scale="1.0" selected="true"
+            statisticName="result.average.duration"
+            virtualUserUid="BrowserUser_Create_report" zoneName=""/>
+    </chart-description>
+    <chart-description autoRange="true"
+        chart-description-type="chart-description-type" description=""
+        domainMarkerVisible="true" granularityLevel="0"
+        historyState="FULL" includeInReport="false"
+        rangeMarkerVisible="true"
+        title="Home - Duration (percentiles) Config 1" typeName="PERCENTILE">
+        <action-curve-description
+            actionUid="f18b10f8-9f51-44ac-b17d-22eed776ab27"
+            benchUid="6546116e-56cf-435a-acdc-dbbc7020254e"
+            color="223,143,143" dashed="false" populationName=""
+            scale="1.0" selected="true" statisticName="result.perc.stat"
+            virtualUserUid="BrowserUser_Create_report" zoneName=""/>
+    </chart-description>
+    <chart-description autoRange="true"
+        chart-description-type="chart-description-type" description=""
+        domainMarkerVisible="true" granularityLevel="0"
+        historyState="XMIN" includeInReport="false"
+        rangeMarkerVisible="true"
+        title="Home - Duration (percentiles) Config 2" typeName="PERCENTILE">
+        <action-curve-description
+            actionUid="f18b10f8-9f51-44ac-b17d-22eed776ab27"
+            benchUid="12cbc0b0-5ffb-4001-85ce-742cd639a2c0"
+            color="223,143,143" dashed="false" populationName=""
+            scale="1.0" selected="true" statisticName="result.perc.stat"
+            virtualUserUid="BrowserUser_Create_report" zoneName=""/>
+    </chart-description>
+    <chart-description autoRange="true"
+        chart-description-type="chart-description-type" description=""
+        domainMarkerVisible="true" granularityLevel="0"
+        historyState="FULL" includeInReport="false"
+        rangeMarkerVisible="true" timeOrigin="RELATIVE"
+        title="Home - Duration (scatter)  Config 1" typeName="CLASSIC">
+        <action-curve-description
+            actionUid="f18b10f8-9f51-44ac-b17d-22eed776ab27"
+            benchUid="6546116e-56cf-435a-acdc-dbbc7020254e"
+            color="15,157,157" dashed="false" populationName=""
+            scale="1.0" selected="true"
+            statisticName="result.scatt.stat"
+            virtualUserUid="BrowserUser_Create_report" zoneName=""/>
+    </chart-description>
+    <chart-description autoRange="true"
+        chart-description-type="chart-description-type" description=""
+        domainMarkerVisible="true" granularityLevel="0"
+        historyState="XMIN" includeInReport="false"
+        rangeMarkerVisible="true" timeOrigin="RELATIVE"
+        title="Home - Duration (scatter) Config 2" typeName="CLASSIC">
+        <action-curve-description
+            actionUid="f18b10f8-9f51-44ac-b17d-22eed776ab27"
+            benchUid="12cbc0b0-5ffb-4001-85ce-742cd639a2c0"
+            color="15,157,157" dashed="false" populationName=""
+            scale="1.0" selected="true"
+            statisticName="result.scatt.stat"
+            virtualUserUid="BrowserUser_Create_report" zoneName=""/>
+    </chart-description>
+    <empty-chart-description/>
+    <empty-chart-description/>
+</charts-model-description>
+<charts-model-description name="Monitoring">
+    <chart-description autoRange="true"
+        chart-description-type="chart-description-type" description=""
+        domainMarkerVisible="true" granularityLevel="0"
+        historyState="FULL" includeInReport="false"
+        rangeMarkerVisible="true" timeOrigin="RELATIVE"
+        title="% BusyWorkers Apache Node 01 - Config 1" typeName="CLASSIC">
+        <monitor-curve-description
+            benchUid="6546116e-56cf-435a-acdc-dbbc7020254e"
+            color="20,106,203" connectionName="http-apache"
+            dashed="false" monitorName="All/%BusyWorkers"
+            monitoredHostName="SampleServerNode01" scale="1.0" selected="true"/>
+    </chart-description>
+    <chart-description autoRange="true"
+        chart-description-type="chart-description-type" description=""
+        domainMarkerVisible="true" granularityLevel="0"
+        historyState="XMIN" includeInReport="false"
+        rangeMarkerVisible="true" timeOrigin="RELATIVE"
+        title="%BusyWorkers Apache Node 01 - Config 2" typeName="CLASSIC">
+        <monitor-curve-description
+            benchUid="12cbc0b0-5ffb-4001-85ce-742cd639a2c0"
+            color="20,106,203" connectionName="http-apache"
+            dashed="false" monitorName="All/%BusyWorkers"
+            monitoredHostName="SampleServerNode01" scale="1.0" selected="true"/>
+    </chart-description>
+</charts-model-description>
+<charts-model-description name="Network Impact">
+    <chart-description autoRange="true"
+        chart-description-type="chart-description-type" description=""
+        domainMarkerVisible="true" granularityLevel="0"
+        historyState="XMIN" includeInReport="false"
+        rangeMarkerVisible="true" timeOrigin="RELATIVE"
+        title="Submit report - GPRS vs 4G" typeName="CLASSIC">
+        <action-curve-description
+            actionUid="053d1f29-a4fe-45bd-903a-79a356d6b77f"
+            benchUid="12cbc0b0-5ffb-4001-85ce-742cd639a2c0"
+            color="153,153,0" dashed="false"
+            populationName="MyPopulationSmallCities" scale="1.0"
+            selected="false" statisticName="result.average.duration"
+            virtualUserUid="MyiPhoneUser_Create_report" zoneName=""/>
+        <action-curve-description
+            actionUid="053d1f29-a4fe-45bd-903a-79a356d6b77f"
+            benchUid="12cbc0b0-5ffb-4001-85ce-742cd639a2c0"
+            color="20,106,203" dashed="false"
+            populationName="MyPopulationBigCities" scale="1.0"
+            selected="true" statisticName="result.average.duration"
+            virtualUserUid="MyiPhoneUser_Create_report" zoneName=""/>
+    </chart-description>
+    <empty-chart-description/>
+</charts-model-description>
+<!--****** END DASHBOARDS  ******-->
+<!--****** RESULTS GRAPH DESC TEMPLATES ******-->
+<charts-templates-description name="template.customs"/>

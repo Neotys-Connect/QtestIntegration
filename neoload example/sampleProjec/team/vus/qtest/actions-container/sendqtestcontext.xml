@@ -1,0 +1,10 @@
+<custom-action actionType="SendUiPathContext" isHit="true"
+    name="sendqtestcontext" uid="e6313236-fb7e-474d-9331-2aa4fb90a880">
+    <description>Send the UiPath Context to NeoLoad WEB ( required to push the results in UiPath Test Manager).
+
+Possible parameters are:&#xd;
+- ProjectId (required): Project name in UiPath Test Manager Default value is "Project name in UiPath Test Manager".</description>
+    <custom-action-parameter name="ProjectName" type="TEXT" value="qConnect - Sample Project"/>
+    <custom-action-parameter name="TestCycle" type="TEXT" value="Cycle 3.2"/>
+    <responsePageFileDescription>recorded-responses/res_e6313236-fb7e-474d-9331-2aa4fb90a880</responsePageFileDescription>
+</custom-action>

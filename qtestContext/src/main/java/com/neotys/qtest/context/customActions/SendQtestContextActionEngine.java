@@ -1,6 +1,7 @@
 package com.neotys.qtest.context.customActions;
 
 import com.google.common.base.Optional;
+
 import com.google.gson.Gson;
 import com.neotys.action.result.ResultFactory;
 import com.neotys.ascode.api.v3.client.ApiClient;
@@ -43,9 +44,9 @@ public class SendQtestContextActionEngine implements ActionEngine {
         }
 
 
-        final String project = parsedArgs.get(QtestContextOption.ProjectId.getName()).get();
-
-
+        final String project = parsedArgs.get(QtestContextOption.ProjectName.getName()).get();
+        final String testcycle=parsedArgs.get(QtestContextOption.TestCycle.getName()).get();
+        final String releasename=parsedArgs.get(QtestContextOption.ReleaseName.getName()).get();
 
         final Logger logger = context.getLogger();
         if (logger.isDebugEnabled()) {
@@ -68,12 +69,12 @@ public class SendQtestContextActionEngine implements ActionEngine {
 
 
 
-            QtestContext uiPathContext=new QtestContext(project);
+            QtestContext uiPathContext=new QtestContext(project,testcycle,releasename);
             String description=gson.toJson(uiPathContext);
 
             testUpdateRequest.setDescription(description);
-             resultsApi.updateTestResult(testUpdateRequest,context.getWorkspaceId(),context.getTestId());
-           appendLineToStringBuilder(responseBuilder, description);
+            resultsApi.updateTestResult(testUpdateRequest,context.getWorkspaceId(),context.getTestId());
+            appendLineToStringBuilder(responseBuilder, description);
 
         }catch (ApiException e) {
             return ResultFactory.newErrorResult(context, STATUS_CODE_TECHNICAL_ERROR, "UIPath Send context Api Error - API Exception "+e.getResponseBody(), e);
@@ -98,7 +99,7 @@ public class SendQtestContextActionEngine implements ActionEngine {
         if(!webPlatformApiUrl.endsWith("/")) {
             basePathBuilder.append("/");
         }
-        basePathBuilder.append(NLWEB_VERSION + "/");
+      //  basePathBuilder.append(NLWEB_VERSION + "/");
         return basePathBuilder.toString();
     }
 

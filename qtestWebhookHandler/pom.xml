@@ -25,7 +25,7 @@
         <QTestApiHost>xray-staging.cloud.xpand-it.com</QTestApiHost>
         <QTestApiPort>xray.cloud.xpand-it.com</QTestApiPort>
         <QtestAPiPath>/api</QtestAPiPath>
-        <QtestAPIToken></QtestAPIToken>
+        <QtestAPiToken></QtestAPiToken>
 
     </properties>
     <dependencies>

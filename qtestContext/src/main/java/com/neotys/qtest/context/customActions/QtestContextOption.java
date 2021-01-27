@@ -11,11 +11,12 @@ import static com.neotys.extensions.action.ActionParameter.Type.TEXT;
 
 enum QtestContextOption implements Option {
 
-    ProjectId("ProjectId", Required, True, TEXT,
+    ProjectName("ProjectName", Required, True, TEXT,
             "Project name in UiPath Test Manager",
                     "Project name in UiPath Test Manager",
-          NON_EMPTY);
-
+          NON_EMPTY),
+    TestCycle("TestCyle",Required,True,TEXT,"Test Cycle Name","Test Cylce name",NON_EMPTY),
+    ReleaseName("ReleaseName",Required,True,TEXT,"Release Name", "Release Name",NON_EMPTY);
     private final String name;
     private final OptionalRequired optionalRequired;
     private final AppearsByDefault appearsByDefault;

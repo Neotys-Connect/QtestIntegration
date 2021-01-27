@@ -1,0 +1,4 @@
+<monitored-host host-name="Sample01" mehost-name="localhost" uid="SampleServerNode01">
+    <description>Apache status metrics from webserver node #1</description>
+    <embedded-action>45569e4d-f3c3-4203-8b75-b01aaa3ac23e</embedded-action>
+</monitored-host>

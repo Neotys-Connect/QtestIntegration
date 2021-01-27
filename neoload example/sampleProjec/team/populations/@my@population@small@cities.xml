@@ -1,0 +1,37 @@
+<population uid="MyPopulationSmallCities">
+    <description>User group with 50% of mobile users with a poor mobile network quality.</description>
+    <split cache="3" factor="50.0" virtualUserUid="MyiPhoneUser_Create_report">
+        <browser-profile acceptEncoding="GZIP,DEFLATE,BROTLI"
+            connections="4" cookies="true" http2="false"
+            name="iPhone 3G" userAgent="Mozilla/5.0 (iPhone; U; CPU iPhone OS 2_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16"/>
+        <wan-emulation-profile averageDownloadBandwidth="34Kbps"
+            averageDownloadLatency="400ms"
+            averageDownloadPacketLoss="0%"
+            averageUploadBandwidth="14Kbps" averageUploadLatency="440ms"
+            averageUploadPacketLoss="0%" downloadBandwidth="52Kbps"
+            downloadLatency="350ms" downloadPacketLoss="0%"
+            isRadio="true" name="GPRS" poorDownloadBandwidth="22Kbps"
+            poorDownloadLatency="600ms" poorDownloadPacketLoss="1%"
+            poorUploadBandwidth="9Kbps" poorUploadLatency="640ms"
+            poorUploadPacketLoss="0%" signalStrength="GOOD"
+            uploadBandwidth="21Kbps" uploadLatency="370ms" uploadPacketLoss="0%"/>
+    </split>
+    <split cache="1" factor="50.0" virtualUserUid="BrowserUser_Create_report">
+        <browser-profile acceptEncoding="GZIP,DEFLATE,BROTLI"
+            connections="6" cookies="true" http2="false" name="browser.recorded"/>
+        <wan-emulation-profile
+            averageDownloadBandwidth="bandwidth.unlimited"
+            averageDownloadLatency="0ms" averageDownloadPacketLoss="0%"
+            averageUploadBandwidth="bandwidth.unlimited"
+            averageUploadLatency="0ms" averageUploadPacketLoss="0%"
+            downloadBandwidth="bandwidth.unlimited"
+            downloadLatency="0ms" downloadPacketLoss="0%"
+            isRadio="false" name="bandwidth.unlimited"
+            poorDownloadBandwidth="bandwidth.unlimited"
+            poorDownloadLatency="0ms" poorDownloadPacketLoss="0%"
+            poorUploadBandwidth="bandwidth.unlimited"
+            poorUploadLatency="0ms" poorUploadPacketLoss="0%"
+            signalStrength="GOOD" uploadBandwidth="bandwidth.unlimited"
+            uploadLatency="0ms" uploadPacketLoss="0%"/>
+    </split>
+</population>

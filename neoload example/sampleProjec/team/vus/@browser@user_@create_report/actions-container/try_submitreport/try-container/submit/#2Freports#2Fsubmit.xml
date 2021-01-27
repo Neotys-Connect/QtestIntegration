@@ -1,0 +1,201 @@
+<http-page executeResourcesDynamically="false" name="/reports/submit"
+    playRequestsSequentially="false"
+    recordedArtifactZipFileName="team/vus/@browser@user_@create_report/%resources%/recorded-artifacts/100f9a05-74f2-41bf-bade-ae1b9a5a5713.zip"
+    slaProfileEnabled="false" thinkTime="6416"
+    thinkTimeMode="MODE_SIMPLE_THINK_TIME" thinkTimeRangeEnd=""
+    thinkTimeRangeStart="" uid="100f9a05-74f2-41bf-bade-ae1b9a5a5713">
+    <embedded-action>329bfdc5-d545-46a0-b900-d85952de7ccb</embedded-action>
+    <embedded-action>522c2504-5c12-4777-a929-d7600d50f70a</embedded-action>
+    <embedded-action>d38cc45e-add2-40b2-94bc-1078c5e038f0</embedded-action>
+    <screenshotFileDescription>recorded-screenshots/sc_44de1282-4eb0-419a-bfb3-0e63a237bc52.jpg</screenshotFileDescription>
+</http-page>
+<http-action actionType="1" contentType="text/html; charset=UTF-8"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="POST" name="/reports/submit" path="/reports/submit"
+    postCharset="UTF-8" postType="3"
+    recordedArtifactZipFileName="team/vus/@browser@user_@create_report/%resources%/recorded-artifacts/100f9a05-74f2-41bf-bade-ae1b9a5a5713.zip"
+    recordedResponseCode="302" recordedResponseTime="258"
+    refererUid="c5d8fd2e-6e8f-47d5-8264-85e22469b023" responseSize="104"
+    serverUid="sampledemo.neotys.com" slaProfileEnabled="false"
+    uid="329bfdc5-d545-46a0-b900-d85952de7ccb" useKeepAlive="true">
+    <binaryPostContentBase64><![CDATA[LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS03ZGYzMTIzOTEwZTE0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9ImZvcm1fYXV0aF90b2tlbiINCg0KNWZlZDM4MTY0ZmRkYzExYjQ2MDc2ZTFkNTU4NTMwNDBmYTJlY2YxYjMwY2VjMDUxNDRiZTBhMzQ5YjBkNWUxYQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS03ZGYzMTIzOTEwZTE0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9ImxhdGl0dWRlIg0KDQo0MC40MTY3MDQ3DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTdkZjMxMjM5MTBlMTQNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0ibG9uZ2l0dWRlIg0KDQotMy43MDM1ODI1DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTdkZjMxMjM5MTBlMTQNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0iY291bnRyeV9uYW1lIg0KDQpTcGFpbg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS03ZGYzMTIzOTEwZTE0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9ImluY2lkZW50X3pvb20iDQoNCjMNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tN2RmMzEyMzkxMGUxNA0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmb3JtX2lkIg0KDQoNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tN2RmMzEyMzkxMGUxNA0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJpbmNpZGVudF90aXRsZSINCg0KdHRpbGUgb2YgdGhlIHJlcG9ydA0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS03ZGYzMTIzOTEwZTE0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9ImluY2lkZW50X2Rlc2NyaXB0aW9uIg0KDQpkZXNjcmlwdGlvbiBvZiB0aGUgcmVwb3J0DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTdkZjMxMjM5MTBlMTQNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0iaW5jaWRlbnRfZGF0ZSINCg0KMDcvMjcvMjAxNQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS03ZGYzMTIzOTEwZTE0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9ImluY2lkZW50X2hvdXIiDQoNCjA4DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTdkZjMxMjM5MTBlMTQNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0iaW5jaWRlbnRfbWludXRlIg0KDQowNg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS03ZGYzMTIzOTEwZTE0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9ImluY2lkZW50X2FtcG0iDQoNCmFtDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTdkZjMxMjM5MTBlMTQNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0iaW5jaWRlbnRfY2F0ZWdvcnlbXSINCg0KMQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS03ZGYzMTIzOTEwZTE0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9InBlcnNvbl9maXJzdCINCg0KbmVvdHlzDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTdkZjMxMjM5MTBlMTQNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0icGVyc29uX2xhc3QiDQoNCm5lb2xvYWQNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tN2RmMzEyMzkxMGUxNA0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJwZXJzb25fZW1haWwiDQoNCg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS03ZGYzMTIzOTEwZTE0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9InNlbGVjdF9jaXR5Ig0KDQoNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tN2RmMzEyMzkxMGUxNA0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJnZW9tZXRyeV9sYWJlbCINCg0KDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTdkZjMxMjM5MTBlMTQNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0iZ2VvbWV0cnlfY29tbWVudCINCg0KDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTdkZjMxMjM5MTBlMTQNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0iZ2VvbWV0cnlfY29sb3IiDQoNCg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS03ZGYzMTIzOTEwZTE0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9Imdlb21ldHJ5X3N0cm9rZXdpZHRoIg0KDQowLjUNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tN2RmMzEyMzkxMGUxNA0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJnZW9tZXRyeV9sYXQiDQoNCg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS03ZGYzMTIzOTEwZTE0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9Imdlb21ldHJ5X2xvbiINCg0KDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTdkZjMxMjM5MTBlMTQNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0iT3BlbkxheWVyc19Db250cm9sX0xheWVyU3dpdGNoZXJfMjdfYmFzZUxheWVycyINCg0KR29vZ2xlIE1hcHMgU2F0ZWxsaXRlDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTdkZjMxMjM5MTBlMTQNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0iRWRpdGFibGUiDQoNCkVkaXRhYmxlDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTdkZjMxMjM5MTBlMTQNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0ibG9jYXRpb25fZmluZCINCg0KbWFkcmlkDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTdkZjMxMjM5MTBlMTQNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0ibG9jYXRpb25fbmFtZSINCg0KTWFkcmlkLCDDgXJlYSBtZXRyb3BvbGl0YW5hIGRlIE1hZHJpZCB5IENvcnJlZG9yIGRlbCBIZW5hcmVzLCBNYWRyaWQsIENvbW11bml0eSBvZiBNYWRyaWQsIFNwYWluDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTdkZjMxMjM5MTBlMTQNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0iaW5jaWRlbnRfbmV3c1tdIg0KDQoNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tN2RmMzEyMzkxMGUxNA0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJuZXdzX2lkIg0KDQoxDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTdkZjMxMjM5MTBlMTQNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0iaW5jaWRlbnRfdmlkZW9bXSINCg0KDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTdkZjMxMjM5MTBlMTQNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0idmlkZW9faWQiDQoNCjENCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tN2RmMzEyMzkxMGUxNA0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJpbmNpZGVudF9waG90b1tdIjsgZmlsZW5hbWU9IiINCkNvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vb2N0ZXQtc3RyZWFtDQoNCg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS03ZGYzMTIzOTEwZTE0DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9InBob3RvX2lkIg0KDQoxDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTdkZjMxMjM5MTBlMTQNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0ic3VibWl0Ig0KDQpTdWJtaXQNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tN2RmMzEyMzkxMGUxNC0tDQo=]]></binaryPostContentBase64>
+    <responsePageFileDescription>recorded-responses/res_b3b6bf38-f87d-4539-9b04-71b23c3e3b6b.html</responsePageFileDescription>
+    <requestContentFileDescription>recorded-requests/req_b3b6bf38-f87d-4539-9b04-71b23c3e3b6b.txt</requestContentFileDescription>
+    <header name="Accept" value="text/html, application/xhtml+xml, */*"/>
+    <header name="Referer" value="http://10.0.4.48/reports/submit"/>
+    <header name="Accept-Language" value="fr-FR"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; MDDRJS; rv:11.0) like Gecko"/>
+    <header name="Content-Type" value="multipart/form-data; boundary=---------------------------7df3123910e14"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Host" value="10.0.4.48"/>
+    <header name="Pragma" value="no-cache"/>
+    <header name="Cookie" value="ushahidi=bkkc45pt5rrhav0j9jqtt1gcf4"/>
+    <header name="Connection" value="keep-alive"/>
+    <responseHeaders>HTTP/1.1 302 Found&#xd;
+Date: Mon, 27 Jul 2015 08:06:57 GMT
+Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips PHP/5.4.16
+X-Powered-By: PHP/5.4.16
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Set-Cookie: ushahidi=bkkc45pt5rrhav0j9jqtt1gcf4; expires=Mon, 27-Jul-2015 10:06:57 GMT; path=/; httponly
+Location: http://10.0.4.48/reports/thanks
+Content-Length: 104
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: text/html; charset=UTF-8</responseHeaders>
+    <record-html-infos extractorOccurence="3" extractorRegExp="false" htmlType="2"/>
+    <multiparts>
+        <multipart-string name="form_auth_token" recordRawValue=""
+            value="5fed38164fddc11b46076e1d55853040fa2ecf1b30cec05144be0a349b0d5e1a" valueMode="USE_EXTRACT">
+            <variable-extractor assertionOnNoMatch="true"
+                defaultValue="&lt;NOT FOUND>" displayMode="1"
+                endsWithSimple="" extractFromVarNameAdv=""
+                extractFromVarNameSimple="" extractType="0"
+                extractTypeAdv="0" extractTypeSimple="0" matchNumber="1"
+                matchNumberAdv="1" matchNumberSimple="1" name="nl_token"
+                refererUid="c5d8fd2e-6e8f-47d5-8264-85e22469b023"
+                regExp="\s[Nn][Aa][Mm][Ee]\s*=\s*[\&quot;']form_auth_token[\&quot;'][^>]*\s[vV][Aa][Ll][Uu][Ee]\s*=\s*[\&quot;'](.*?)[\&quot;']"
+                regExpAdv="\s[Nn][Aa][Mm][Ee]\s*=\s*[\&quot;']form_auth_token[\&quot;'][^>]*\s[vV][Aa][Ll][Uu][Ee]\s*=\s*[\&quot;'](.*?)[\&quot;']"
+                setDefaultValue="true" startsWithSimple=""
+                template="$1$" templateAdv="$1$"
+                uid="5ca8db39-de5e-4ccf-9991-f839628bc7fd" xpath="">
+                <variable-extractor-group extract="true" occurs="1"
+                    pattern="" type="4"/>
+            </variable-extractor>
+        </multipart-string>
+        <multipart-string name="latitude" recordRawValue=""
+            value="${Fil_cities.Latitude}" valueMode="USE_VALUE"/>
+        <multipart-string name="longitude" recordRawValue=""
+            value="${Fil_cities.Longitude}" valueMode="USE_VALUE"/>
+        <multipart-string name="country_name" recordRawValue=""
+            value="${Fil_cities.Country}" valueMode="USE_VALUE"/>
+        <multipart-string name="incident_zoom" recordRawValue=""
+            value="3" valueMode="USE_VALUE"/>
+        <multipart-string name="form_id" recordRawValue="" value="" valueMode="USE_VALUE"/>
+        <multipart-string name="incident_title" recordRawValue=""
+            value="${my_title}" valueMode="USE_VALUE"/>
+        <multipart-string name="incident_description" recordRawValue=""
+            value="${my_description}" valueMode="USE_VALUE"/>
+        <multipart-string name="incident_date" recordRawValue=""
+            value="${date_of_today}" valueMode="USE_VALUE"/>
+        <multipart-string name="incident_hour" recordRawValue=""
+            value="08" valueMode="USE_VALUE"/>
+        <multipart-string name="incident_minute" recordRawValue=""
+            value="06" valueMode="USE_VALUE"/>
+        <multipart-string name="incident_ampm" recordRawValue=""
+            value="am" valueMode="USE_VALUE"/>
+        <multipart-string name="incident_category[]" recordRawValue=""
+            value="${Ext_category}" valueMode="USE_VALUE"/>
+        <multipart-string name="person_first" recordRawValue=""
+            value="neotys" valueMode="USE_VALUE"/>
+        <multipart-string name="person_last" recordRawValue=""
+            value="neoload" valueMode="USE_VALUE"/>
+        <multipart-string name="person_email" recordRawValue="" value="" valueMode="USE_VALUE"/>
+        <multipart-string name="select_city" recordRawValue="" value="" valueMode="USE_VALUE"/>
+        <multipart-string name="geometry_label" recordRawValue=""
+            value="" valueMode="USE_VALUE"/>
+        <multipart-string name="geometry_comment" recordRawValue=""
+            value="" valueMode="USE_VALUE"/>
+        <multipart-string name="geometry_color" recordRawValue=""
+            value="" valueMode="USE_VALUE"/>
+        <multipart-string name="geometry_strokewidth" recordRawValue=""
+            value="0.5" valueMode="USE_VALUE"/>
+        <multipart-string name="geometry_lat" recordRawValue="" value="" valueMode="USE_VALUE"/>
+        <multipart-string name="geometry_lon" recordRawValue="" value="" valueMode="USE_VALUE"/>
+        <multipart-string
+            name="OpenLayers_Control_LayerSwitcher_27_baseLayers"
+            recordRawValue="" value="Google Maps Satellite" valueMode="USE_VALUE"/>
+        <multipart-string name="Editable" recordRawValue=""
+            value="Editable" valueMode="USE_VALUE"/>
+        <multipart-string name="location_find" recordRawValue=""
+            value="${Fil_cities.City}" valueMode="USE_VALUE"/>
+        <multipart-string name="location_name" recordRawValue=""
+            value="${Fil_cities.City}" valueMode="USE_VALUE"/>
+        <multipart-string name="incident_news[]" recordRawValue=""
+            value="" valueMode="USE_VALUE"/>
+        <multipart-string name="news_id" recordRawValue="" value="1" valueMode="USE_VALUE"/>
+        <multipart-string name="incident_video[]" recordRawValue=""
+            value="" valueMode="USE_VALUE"/>
+        <multipart-string name="video_id" recordRawValue="" value="1" valueMode="USE_VALUE"/>
+        <multipart-file attachedFilename="recorded-resources/filepart"
+            contentType="application/octet-stream" filename="" name="incident_photo[]"/>
+        <multipart-string name="photo_id" recordRawValue="" value="1" valueMode="USE_VALUE"/>
+        <multipart-string name="submit" recordRawValue="" value="Submit" valueMode="USE_VALUE"/>
+    </multiparts>
+</http-action>
+<http-action actionType="2" contentType="text/html; charset=UTF-8"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET" name="/reports/thanks" path="/reports/thanks"
+    postType="1"
+    recordedArtifactZipFileName="team/vus/@browser@user_@create_report/%resources%/recorded-artifacts/100f9a05-74f2-41bf-bade-ae1b9a5a5713.zip"
+    recordedResponseCode="200" recordedResponseTime="90"
+    refererUid="329bfdc5-d545-46a0-b900-d85952de7ccb"
+    responseSize="11544" slaProfileEnabled="false"
+    uid="522c2504-5c12-4777-a929-d7600d50f70a" useKeepAlive="true">
+    <responsePageFileDescription>recorded-responses/res_22b11d28-55b4-4838-9cef-a1521483b030.html</responsePageFileDescription>
+    <requestContentFileDescription>recorded-requests/req_22b11d28-55b4-4838-9cef-a1521483b030.txt</requestContentFileDescription>
+    <header name="Accept" value="text/html, application/xhtml+xml, */*"/>
+    <header name="Referer" value="http://10.0.4.48/reports/submit"/>
+    <header name="Accept-Language" value="fr-FR"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; MDDRJS; rv:11.0) like Gecko"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Host" value="10.0.4.48"/>
+    <header name="Pragma" value="no-cache"/>
+    <header name="Cookie" value="ushahidi=bkkc45pt5rrhav0j9jqtt1gcf4"/>
+    <header name="Connection" value="keep-alive"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 27 Jul 2015 08:06:57 GMT
+Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips PHP/5.4.16
+X-Powered-By: PHP/5.4.16
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Set-Cookie: ushahidi=bkkc45pt5rrhav0j9jqtt1gcf4; expires=Mon, 27-Jul-2015 10:06:58 GMT; path=/; httponly
+Vary: Accept-Encoding
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: text/html; charset=UTF-8
+Content-Length: 11544</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>
+<http-action actionType="1" contentType="image/gif"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="GET" name="/scheduler" path="/scheduler" postType="1"
+    recordedArtifactZipFileName="team/vus/@browser@user_@create_report/%resources%/recorded-artifacts/100f9a05-74f2-41bf-bade-ae1b9a5a5713.zip"
+    recordedResponseCode="200" recordedResponseTime="67"
+    responseSize="0" serverUid="sampledemo.neotys.com"
+    slaProfileEnabled="false" uid="d38cc45e-add2-40b2-94bc-1078c5e038f0" useKeepAlive="true">
+    <responsePageFileDescription>recorded-responses/res_aaebf0bd-ec0d-4be6-8fb8-2a8f323151c7.gif</responsePageFileDescription>
+    <requestContentFileDescription>recorded-requests/req_aaebf0bd-ec0d-4be6-8fb8-2a8f323151c7.txt</requestContentFileDescription>
+    <header name="Accept" value="image/png, image/svg+xml, image/*;q=0.8, */*;q=0.5"/>
+    <header name="Referer" value="http://10.0.4.48/reports/thanks"/>
+    <header name="Accept-Language" value="fr-FR"/>
+    <header name="User-Agent" value="Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; MDDRJS; rv:11.0) like Gecko"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Host" value="10.0.4.48"/>
+    <header name="Cookie" value="ushahidi=bkkc45pt5rrhav0j9jqtt1gcf4"/>
+    <header name="Connection" value="keep-alive"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 27 Jul 2015 08:06:58 GMT
+Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips PHP/5.4.16
+X-Powered-By: PHP/5.4.16
+Expires: Wed, 11 Nov 1998 11:11:11 GMT
+Cache-Control: must-revalidate
+Pragma: no-cache
+Set-Cookie: ushahidi=bkkc45pt5rrhav0j9jqtt1gcf4; expires=Mon, 27-Jul-2015 10:06:58 GMT; path=/; httponly
+Vary: Accept-Encoding
+Keep-Alive: timeout=5, max=99
+Connection: Keep-Alive
+Content-Type: image/gif</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>

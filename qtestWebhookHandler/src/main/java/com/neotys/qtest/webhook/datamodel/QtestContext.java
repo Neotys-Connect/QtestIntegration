@@ -2,6 +2,8 @@ package com.neotys.qtest.webhook.datamodel;
 
 public class QtestContext {
     String projectName;
+    String testcycle;
+    String releasename;
 
     public String getProjectName() {
         return projectName;
@@ -11,7 +13,26 @@ public class QtestContext {
         this.projectName = projectName;
     }
 
-    public QtestContext(String projectName) {
+    public QtestContext(String projectName,String testcycle,String releasename)
+    {
         this.projectName = projectName;
+        this.testcycle=testcycle;
+        this.releasename=releasename;
+    }
+
+    public String getReleasename() {
+        return releasename;
+    }
+
+    public void setReleasename(String releasename) {
+        this.releasename = releasename;
+    }
+
+    public String getTestcycle() {
+        return testcycle;
+    }
+
+    public void setTestcycle(String testcycle) {
+        this.testcycle = testcycle;
     }
 }

@@ -1,5 +1,6 @@
 package com.neotys.qtest.webhook.datamodel;
 
+import com.neotys.ascode.api.v3.client.api.ResultsApi;
 import com.neotys.ascode.api.v3.client.model.*;
 import com.neotys.qtest.api.client.model.AutomationTestLog;
 import com.neotys.qtest.webhook.common.NeoLoadException;
@@ -8,6 +9,8 @@ import org.eclipse.jgit.annotations.Nullable;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 import static com.neotys.qtest.webhook.common.Constants.NEOLOAD;
@@ -18,23 +21,39 @@ import static com.neotys.qtest.webhook.common.Constants.SLA_TYPE_PERTEST;
 public class NeoLoadRequirement {
     String name;
     String description;
-    String projectid;
     Integer ordno;
 
     boolean haserror;
     String comment;
     String result;
+    String elementID;
+    SLAKPIDefinition slakpiDefinition;
 
+    public String getElementID() {
+        return elementID;
+    }
+
+    public void setElementID(String elementID) {
+        this.elementID = elementID;
+    }
+
+    public SLAKPIDefinition getSlakpiDefinition() {
+        return slakpiDefinition;
+    }
+
+    public void setSlakpiDefinition(SLAKPIDefinition slakpiDefinition) {
+        this.slakpiDefinition = slakpiDefinition;
+    }
 
     public NeoLoadRequirement(String name, String description, String projectid) {
         this.name = name;
         this.description = description;
-        this.projectid = projectid;
+
     }
 
-    public TestStepLogResult toTestLogResult()
+    public TestStepLogResult toTestLogResult(NeoLoadAttachment neoLoadAttachment)
     {
-        TestStepLogResult testStepLogResult=new TestStepLogResult(ordno,null,description,"PASS",null,haserror,result,comment);
+        TestStepLogResult testStepLogResult=new TestStepLogResult(ordno,null,description,"PASS",null,haserror,result,comment,neoLoadAttachment);
         return  testStepLogResult;
     }
 
@@ -73,13 +92,15 @@ public class NeoLoadRequirement {
         this.result = result;
     }
 
-    public NeoLoadRequirement(SLAPerIntervalDefinition slaPerIntervalDefinition, String projectid) throws NeoLoadException {
-        this.projectid = projectid;
+    public NeoLoadRequirement(SLAPerIntervalDefinition slaPerIntervalDefinition, AtomicInteger atomicLong) throws NeoLoadException {
         if(slaPerIntervalDefinition!=null)
         {
+            ordno=atomicLong.getAndIncrement();
             name=NEOLOAD+"_"+SLA_TYPE_PERTEST+"_"+slaPerIntervalDefinition.getKpi().getValue()+":"+slaPerIntervalDefinition.getElement().getCategory().getValue()+"_"+slaPerIntervalDefinition.getElement().getName();
             description=slaPerIntervalDefinition.getKpi().getValue() +  " on "+slaPerIntervalDefinition.getElement().getCategory().getValue()+" named "+slaPerIntervalDefinition.getElement().getName()+" Failed Threshold is " +  getThresholdString(slaPerIntervalDefinition.getFailedThreshold());
 
+            this.elementID=slaPerIntervalDefinition.getElement().getElementID();
+            this.slakpiDefinition=slaPerIntervalDefinition.getKpi();
             if(slaPerIntervalDefinition.getStatus().equals(SLAStatusDefinition.FAILED))
                 haserror=true;
             else
@@ -146,16 +167,18 @@ public class NeoLoadRequirement {
         return result;
     }
 
-    public NeoLoadRequirement(SLAGlobalIndicatorDefinition slaGlobalIndicatorDefinition, String projectid) throws NeoLoadException {
-        this.projectid = projectid;
+    public NeoLoadRequirement(SLAGlobalIndicatorDefinition slaGlobalIndicatorDefinition, AtomicInteger atomicInteger) throws NeoLoadException {
+
 
 
         if(slaGlobalIndicatorDefinition!=null)
         {
+            ordno=atomicInteger.getAndIncrement();
             name=NEOLOAD+"_"+SLA_TYPE_GLOBAL+slaGlobalIndicatorDefinition.getKpi().getValue();
             description=slaGlobalIndicatorDefinition.getKpi().getValue() +  " Failed Threshold is " +  getThresholdString(slaGlobalIndicatorDefinition.getFailedThreshold());
 
-
+            this.elementID=null;
+            this.slakpiDefinition=slaGlobalIndicatorDefinition.getKpi();
             if(slaGlobalIndicatorDefinition.getStatus().getValue().equalsIgnoreCase("FAILED"))
             {
                 if (slaGlobalIndicatorDefinition.getKpi() != null)
@@ -191,15 +214,16 @@ public class NeoLoadRequirement {
         else
             throw new NeoLoadException("No GLobal SLA defined");
     }
-    public NeoLoadRequirement(SLAPerTestResultDefinition slaPerTestResultDefinition, String projectid) throws NeoLoadException {
-        this.projectid = projectid;
+    public NeoLoadRequirement(SLAPerTestResultDefinition slaPerTestResultDefinition, AtomicInteger atomicInteger) throws NeoLoadException {
 
 
         if(slaPerTestResultDefinition !=null) {
+            ordno=atomicInteger.getAndIncrement();
             name=NEOLOAD+"_"+SLA_TYPE_PERTEST+"_"+slaPerTestResultDefinition.getKpi().getValue()+":"+slaPerTestResultDefinition.getElement().getCategory().getValue()+"_"+slaPerTestResultDefinition.getElement().getName();
             description=slaPerTestResultDefinition.getKpi().getValue() +  " on "+slaPerTestResultDefinition.getElement().getCategory().getValue()+" named "+slaPerTestResultDefinition.getElement().getName()+" Failed Threshold is " +  getThresholdString(slaPerTestResultDefinition.getFailedThreshold());
 
-
+            this.elementID=slaPerTestResultDefinition.getElement().getElementID();
+            this.slakpiDefinition=slaPerTestResultDefinition.getKpi();
             if(slaPerTestResultDefinition.getStatus().getValue().equalsIgnoreCase("FAILED"))
                 comment=generateMessage("FAILED",slaPerTestResultDefinition.getFailedThreshold(),slaPerTestResultDefinition.getValue(),slaPerTestResultDefinition.getElement(),slaPerTestResultDefinition.getKpi(),null);
             else
@@ -238,13 +262,7 @@ public class NeoLoadRequirement {
         this.description = description;
     }
 
-    public String getProjectid() {
-        return projectid;
-    }
 
-    public void setProjectid(String projectid) {
-        this.projectid = projectid;
-    }
 
 
 

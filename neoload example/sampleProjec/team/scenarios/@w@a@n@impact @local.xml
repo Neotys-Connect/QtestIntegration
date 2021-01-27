@@ -1,0 +1,154 @@
+<scenario postMonitoringTime="-1" preMonitoringTime="-1"
+    slaProfileEnabled="false" slaProfileName="DefaultSLA"
+    traceVariables="true" uid="WANImpact Local" virtualUsersStates="true">
+    <!--****** POPULATION POLICY ******-->
+    <population-policy name="MyPopulationSmallCities">
+        <duration-policy-entry iterations="1" time="300" timeUnit="0" type="2"/>
+        <volume-policy-entry>
+            <constant-volume-policy iterationNumber="1" userNumber="10"/>
+        </volume-policy-entry>
+        <start-stop-policy-entry start-delay="0" start-type="0"
+            stop-delay="60000" stop-type="0"/>
+        <runtime-policy continueOnError="true" thinktimePolicy="0"
+            thinktimeValue="5000" vuStartDelay="10000" vuStartMode="1"/>
+        <!--****** POPULATION LG HOSTS ******-->
+        <lg-hosts>
+            <lg-host-entry>$zoneID=Default zone;$lgID=localhost:7100</lg-host-entry>
+        </lg-hosts>
+    </population-policy>
+    <!--****** POPULATION POLICY ******-->
+    <population-policy name="MyPopulationBigCities">
+        <duration-policy-entry iterations="1" time="300" timeUnit="0" type="2"/>
+        <volume-policy-entry>
+            <rampup-volume-policy delayIncrement="2.0"
+                delayTypeIncrement="2" initialUserNumber="5"
+                iterationNumber="1" maxUserNumber="0" userIncrement="5"/>
+        </volume-policy-entry>
+        <start-stop-policy-entry start-delay="0" start-type="0"
+            stop-delay="60000" stop-type="0"/>
+        <runtime-policy continueOnError="true" thinktimePolicy="0"
+            thinktimeValue="5000" vuStartDelay="10000" vuStartMode="1"/>
+        <!--****** POPULATION LG HOSTS ******-->
+        <lg-hosts>
+            <lg-host-entry>$zoneID=Default zone;$lgID=localhost:7100</lg-host-entry>
+        </lg-hosts>
+    </population-policy>
+    <!--****** POPULATION POLICY ******-->
+    <population-policy name="qtest">
+        <duration-policy-entry iterations="1" time="120" timeUnit="0" type="1"/>
+        <volume-policy-entry>
+            <constant-volume-policy iterationNumber="1" userNumber="1"/>
+        </volume-policy-entry>
+        <start-stop-policy-entry start-delay="0" start-type="0"
+            stop-delay="60000" stop-type="0"/>
+        <runtime-policy continueOnError="true" thinktimePolicy="0"
+            thinktimeValue="5000" vuStartDelay="0" vuStartMode="0"/>
+        <!--****** POPULATION LG HOSTS ******-->
+        <lg-hosts>
+            <lg-host-entry>$zoneID=Default zone;$lgID=localhost:7100</lg-host-entry>
+        </lg-hosts>
+    </population-policy>
+    <dashboards defaultDashboardUid="Graph board"/>
+    <!--****** DASHBOARDS  ******-->
+    <charts-model-description name="Graph board">
+        <chart-description autoRange="true"
+            chart-description-type="chart-description-type"
+            domainMarkerVisible="true" granularityLevel="0"
+            historyState="FULL" includeInReport="false"
+            rangeMarkerVisible="true" title="Controller/User Load" typeName="CLASSIC">
+            <monitor-curve-description color="20,106,203"
+                connectionName="NeoLoad" dashed="false"
+                monitorName="UserLoad" monitoredHostName="NeoLoad"
+                scale="1.0" selected="true"/>
+        </chart-description>
+        <chart-description autoRange="true"
+            chart-description-type="chart-description-type"
+            domainMarkerVisible="true" granularityLevel="0"
+            historyState="FULL" includeInReport="false"
+            rangeMarkerVisible="true"
+            title="Submit report - Average duration" typeName="CLASSIC">
+            <action-curve-description
+                actionUid="053d1f29-a4fe-45bd-903a-79a356d6b77f"
+                color="153,153,0" dashed="false" populationName=""
+                scale="1.0" selected="true"
+                statisticName="result.average.duration"
+                virtualUserUid="MyiPhoneUser_Create_report" zoneName=""/>
+        </chart-description>
+        <chart-description autoRange="true"
+            chart-description-type="chart-description-type"
+            domainMarkerVisible="true" granularityLevel="0"
+            historyState="FULL" includeInReport="false"
+            rangeMarkerVisible="true" title="Home - Average duration" typeName="CLASSIC">
+            <action-curve-description
+                actionUid="f18b10f8-9f51-44ac-b17d-22eed776ab27"
+                color="153,153,0" dashed="false" populationName=""
+                scale="1.0" selected="true"
+                statisticName="result.average.duration"
+                virtualUserUid="BrowserUser_Create_report" zoneName=""/>
+        </chart-description>
+        <chart-description autoRange="true"
+            chart-description-type="chart-description-type"
+            domainMarkerVisible="true" granularityLevel="0"
+            historyState="FULL" includeInReport="false"
+            rangeMarkerVisible="true"
+            title="SampleServerNode01/http-apache/All/BusyWorkers" typeName="CLASSIC">
+            <monitor-curve-description color="20,106,203"
+                connectionName="http-apache" dashed="false"
+                monitorName="All/BusyWorkers"
+                monitoredHostName="SampleServerNode01" scale="1.0" selected="false"/>
+            <monitor-curve-description color="88,183,55"
+                connectionName="http-apache" dashed="false"
+                monitorName="All/BusyWorkers"
+                monitoredHostName="SampleServerNode02" scale="1.0" selected="true"/>
+        </chart-description>
+        <chart-description autoRange="true"
+            chart-description-type="chart-description-type"
+            domainMarkerVisible="true" granularityLevel="0"
+            historyState="FULL" includeInReport="false"
+            rangeMarkerVisible="true"
+            title="SampleServerNode01/http-apache/All/%BusyWorkers" typeName="CLASSIC">
+            <monitor-curve-description color="20,106,203"
+                connectionName="http-apache" dashed="false"
+                monitorName="All/%BusyWorkers"
+                monitoredHostName="SampleServerNode01" scale="1.0" selected="false"/>
+            <monitor-curve-description color="88,183,55"
+                connectionName="http-apache" dashed="false"
+                monitorName="All/%BusyWorkers"
+                monitoredHostName="SampleServerNode02" scale="1.0" selected="true"/>
+        </chart-description>
+        <empty-chart-description/>
+    </charts-model-description>
+    <!--****** END DASHBOARDS  ******-->
+    <!--****** START DATA FILTERS  ******-->
+    <!--****** END DATA FILTERS  ******-->
+    <!--****** START RENDEZ-VOUS POLICIES  ******-->
+    <!--****** END RENDEZ-VOUS POLICIES  ******-->
+    <!--****** START DEBUG POLICY ******-->
+    <debug-policy mode="1"/>
+    <!--****** END DEBUG POLICY ******-->
+    <!--****** START VU STATES ******-->
+    <!--****** END VU STATES ******-->
+    <!--****** START EXCLUSION FILTER ******-->
+    <request-path-exclusion-filter isEnabled="false">
+        <regexps>
+            <regexp>.*\.jpg</regexp>
+            <regexp>.*\.jpeg</regexp>
+            <regexp>.*\.gif</regexp>
+            <regexp>.*\.png</regexp>
+            <regexp>.*\.bmp</regexp>
+            <regexp>.*\.css</regexp>
+            <regexp>.*\.js</regexp>
+            <regexp>.*\.swf</regexp>
+            <regexp>.*\.ico</regexp>
+            <regexp>.*\.jar</regexp>
+            <regexp>.*\.class</regexp>
+            <regexp>.*\.properties</regexp>
+        </regexps>
+    </request-path-exclusion-filter>
+    <!--****** END  EXCLUSION FILTER ******-->
+    <!--****** START DYNATRACE MONITORING ******-->
+    <dynatrace-monitoring/>
+    <!--****** END  DYNATRACE MONITORING ******-->
+    <!--****** START TRACE VARIABLES ******-->
+    <!--****** END TRACE VARIABLES ******-->
+</scenario>

@@ -24,7 +24,7 @@ public class Constants {
     public static final String SECRET_QTEST_PORT ="QtestApiPort";
     public static final String SECRET_QTEST_APIPATH ="QtestAPiPath";
 
-    public static final String SECRET_QTEST_APITOKEN ="QtestAPISecret";
+    public static final String SECRET_QTEST_APITOKEN ="QtestAPiToken";
 
     public static final String SECRET_QTEST_TENANTID="UiPathTenantID";
     public static final String SECRET_QTEST_USERNAME="UiPathUUsername";
@@ -60,4 +60,9 @@ public class Constants {
     public static final String CLOUD_ROBOT_PARAMETERNAME="results";
     public static final String ONPREM_ROBOT_PARAMETERNAME="file";
 
+
+    //---neoload web reference
+    public static final String COUNTER_USER_LOAD="User Load";
+    public static final String ELEMENTID_ALL_REQUTEST="all-requests";
+    public static final String ELEMENTID_ALL_TRANSACTION="all-transactions";
 }

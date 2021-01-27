@@ -13,8 +13,8 @@ services:
     - NL_API_PORT=443
     - PORT=8080
     - logging-level=DEBUG
-    - QTestApiHost= api.qasymphony.com
-    - QTestApiPort =443
+    - QtestApiHost= api.qasymphony.com
+    - QtestApiPort =443
     - QtestAPiPath =/api
     - QtestAPIToken =TOKEN_TOBE_REPLACE
 

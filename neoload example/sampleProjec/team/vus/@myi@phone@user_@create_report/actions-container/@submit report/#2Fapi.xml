@@ -1,0 +1,82 @@
+<http-page executeResourcesDynamically="false" name="/api"
+    playRequestsSequentially="false"
+    recordedArtifactZipFileName="team/vus/@myi@phone@user_@create_report/%resources%/recorded-artifacts/79079e5a-cbbe-460d-af2f-5f67b65357a8.zip"
+    slaProfileEnabled="false" thinkTime="39101"
+    thinkTimeMode="MODE_SIMPLE_THINK_TIME" thinkTimeRangeEnd=""
+    thinkTimeRangeStart="" uid="79079e5a-cbbe-460d-af2f-5f67b65357a8">
+    <embedded-action>e26b1d9d-71c9-4a16-b3fe-312ea9273e64</embedded-action>
+</http-page>
+<http-action actionType="1"
+    contentType="application/json; charset=utf-8"
+    extractorInjectPathPolicy="2" extractorPathPolicy="1"
+    followRedirects="false" generatedByClient="false"
+    linkExtractorSeveralMatchOccurrence="1"
+    linkExtractorSeveralMatchPolicy="1" linkExtractorType="6"
+    method="POST" name="/api" path="/api" postCharset="UTF-8"
+    postType="1"
+    recordedArtifactZipFileName="team/vus/@myi@phone@user_@create_report/%resources%/recorded-artifacts/79079e5a-cbbe-460d-af2f-5f67b65357a8.zip"
+    recordedResponseCode="200" recordedResponseTime="97"
+    responseSize="110" serverUid="sampledemo.neotys.com"
+    slaProfileEnabled="true" slaProfileName="DefaultSLA"
+    uid="e26b1d9d-71c9-4a16-b3fe-312ea9273e64" useKeepAlive="true">
+    <binaryPostContentBase64><![CDATA[aW5jaWRlbnRfYW1wbT1hbSZyZXNwPWpzb24maW5jaWRlbnRfZGVzY3JpcHRpb249SGhoaGgmbG9jYXRpb25fbmFtZT1aLkEuJTIwbGVzJTIwUGFsdWRzJTIwMSUyMGV0JTIwMiwlMjBBdWJhZ25lLCUyMFByb3ZlbmNlLUFscGVzLUMlQzMlQjR0ZSUyMGQnQXp1ciwlMjBGcmFuY2UmaW5jaWRlbnRfdGl0bGU9RmZmZmZmJmxvbmdpdHVkZT01LjU5OTA0Mzg4Mjc1NTMwMSZpbmNpZGVudF9ob3VyPTExJmxhdGl0dWRlPTQzLjI5MDg2NDg0NzQ4MzY2JmluY2lkZW50X2NhdGVnb3J5PTEmaW5jaWRlbnRfZGF0ZT0wMS8yMC8yMDE0JnRhc2s9cmVwb3J0JmluY2lkZW50X21pbnV0ZT00OQ==]]></binaryPostContentBase64>
+    <responsePageFileDescription>recorded-responses/res_8b73cbff-c8df-4b12-82a5-f0a306d73526</responsePageFileDescription>
+    <requestContentFileDescription>recorded-requests/req_8b73cbff-c8df-4b12-82a5-f0a306d73526.txt</requestContentFileDescription>
+    <parameter encodeName="true" encodeValue="true" name="incident_ampm"
+        recordRawValue="am" separator="=" value="am" valueMode="USE_VALUE"/>
+    <parameter encodeName="true" encodeValue="true" name="resp"
+        recordRawValue="json" separator="=" value="json" valueMode="USE_VALUE"/>
+    <parameter encodeName="true" encodeValue="true"
+        name="incident_description" recordRawValue="Hhhhh" separator="="
+        value="${my_description}" valueMode="USE_VALUE"/>
+    <parameter encodeName="true" encodeValue="false"
+        name="location_name"
+        recordRawValue="Z.A.%20les%20Paluds%201%20et%202,%20Aubagne,%20Provence-Alpes-C%C3%B4te%20d'Azur,%20France"
+        separator="=" value="${Fil_cities.City},${Fil_cities.Country}" valueMode="USE_VALUE"/>
+    <parameter encodeName="true" encodeValue="true"
+        name="incident_title" recordRawValue="Ffffff" separator="="
+        value="${my_title}" valueMode="USE_VALUE"/>
+    <parameter encodeName="true" encodeValue="true" name="longitude"
+        recordRawValue="5.599043882755301" separator="="
+        value="${Fil_cities.Longitude}" valueMode="USE_VALUE"/>
+    <parameter encodeName="true" encodeValue="true" name="incident_hour"
+        recordRawValue="11" separator="=" value="11" valueMode="USE_VALUE"/>
+    <parameter encodeName="true" encodeValue="true" name="latitude"
+        recordRawValue="43.29086484748366" separator="="
+        value="${Fil_cities.Latitude}" valueMode="USE_VALUE"/>
+    <parameter encodeName="true" encodeValue="true"
+        name="incident_category" recordRawValue="1" separator="="
+        value="${RandomCategory}" valueMode="USE_VALUE"/>
+    <parameter encodeName="true" encodeValue="false"
+        name="incident_date" recordRawValue="01/20/2014" separator="="
+        value="${date_of_today}" valueMode="USE_VALUE"/>
+    <parameter encodeName="true" encodeValue="true" name="task"
+        recordRawValue="report" separator="=" value="report" valueMode="USE_VALUE"/>
+    <parameter encodeName="true" encodeValue="true"
+        name="incident_minute" recordRawValue="49" separator="="
+        value="49" valueMode="USE_VALUE"/>
+    <urlPostParameter encodeName="true" encodeValue="true" name="task"
+        recordRawValue="report" separator="=" value="report" valueMode="USE_VALUE"/>
+    <header name="Host" value="192.168.100.102"/>
+    <header name="Accept-Encoding" value="gzip, deflate"/>
+    <header name="Content-Type" value="application/x-www-form-urlencoded"/>
+    <header name="Accept-Language" value="en-us"/>
+    <header name="Pragma" value="no-cache"/>
+    <header name="Accept" value="*/*"/>
+    <header name="Connection" value="keep-alive"/>
+    <header name="User-Agent" value="Ushahidi/3.7 CFNetwork/672.0.8 Darwin/14.0.0"/>
+    <responseHeaders>HTTP/1.1 200 OK&#xd;
+Date: Mon, 20 Jan 2014 10:50:12 GMT
+Server: Apache/2.2.16 (Debian)
+X-Powered-By: PHP/5.3.3-7+squeeze18
+Set-Cookie: ushahidi=bn24dh60g5urqiam98ejvopak6; path=/; HttpOnly
+Expires: Sat, 26 Jul 1997 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+Pragma: no-cache
+Set-Cookie: ushahidi=bn24dh60g5urqiam98ejvopak6; path=/; httponly
+Content-Length: 110
+Keep-Alive: timeout=15, max=100
+Connection: Keep-Alive
+Content-Type: application/json; charset=utf-8</responseHeaders>
+    <record-html-infos extractorRegExp="false" htmlType="0"/>
+</http-action>
