@@ -27,7 +27,7 @@
             <dependency>
                 <groupId>com.neotys.ascode</groupId>
                 <artifactId>api-client-v3</artifactId>
-                <version>1.0.20-SNAPSHOT</version>
+                <version>1.0.20</version>
             </dependency>
 
         </dependencies>

@@ -13,14 +13,16 @@ import com.neotys.qtest.api.client.api.*;
 import com.neotys.qtest.api.client.model.*;
 import com.neotys.qtest.webhook.Logger.NeoLoadLogger;
 import com.neotys.qtest.webhook.common.NeoLoadException;
-import com.neotys.qtest.webhook.datamodel.NeoLoadAttachment;
-import com.neotys.qtest.webhook.datamodel.NeoLoadRequirement;
-import com.neotys.qtest.webhook.datamodel.QtestContext;
-import com.neotys.qtest.webhook.datamodel.QtestUser;
+import com.neotys.qtest.webhook.datamodel.*;
 
 import io.vertx.core.Future;
 import io.vertx.core.Vertx;
+import io.vertx.core.WorkerExecutor;
+import io.vertx.core.json.Json;
 import net.dongliu.gson.GsonJava8TypeAdapterFactory;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.threeten.bp.Instant;
 import org.threeten.bp.OffsetDateTime;
 import org.threeten.bp.ZoneId;
@@ -30,7 +32,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
+
 import java.util.stream.Collectors;
 
 import static com.neotys.qtest.webhook.common.Constants.*;
@@ -66,7 +68,7 @@ public class NeoLoadHttpSyncronizer {
     private String qtestAPIurl;
     private String neoloadUIPathTestCaseName;
     private Optional<String> qtestApiToken;
-
+    private Vertx vertx;
     private List<String> uiPathCookies;
 
     private UUID testsetid;
@@ -90,6 +92,7 @@ public class NeoLoadHttpSyncronizer {
         qTestApiClient.setApiKey(qtestApiToken.get());
 
 
+        this.vertx=vertx;
 
 
     }
@@ -100,7 +103,18 @@ public class NeoLoadHttpSyncronizer {
     }
 
 
-
+    private boolean isJSONValid(String test) {
+        try {
+            new JSONObject(test);
+        } catch (JSONException ex) {
+                  try {
+                new JSONArray(test);
+            } catch (JSONException ex1) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 
     private Future<QtestContext> getQtestProject()  {
@@ -115,21 +129,20 @@ public class NeoLoadHttpSyncronizer {
             neoloadUIPathTestCaseName=NEOLOAD+ " "+ testResultDefinition.getProject()+"_"+testResultDefinition.getScenario();
             if(description!=null)
             {
-                if(description.isEmpty()||description.trim().isEmpty())
-                {
 
-                    logger.debug("Description is currently empty--let's wait");
-                    Thread.sleep(2000);
-                    logger.debug("The context has not been sent yet...");
-                    testResultDefinition=resultsApi.getTestResult(workspaceid,testid);
-                    description = testResultDefinition.getDescription();
+
+                if(!description.isEmpty()||!description.trim().isEmpty()) {
+                    if(isJSONValid(description)) {
+                        logger.debug("Converting Description into java Object + " + description);
+                        Gson gson = new GsonBuilder().registerTypeAdapterFactory(new GsonJava8TypeAdapterFactory()).create();
+                        QtestContext uipathContext = gson.fromJson(description, QtestContext.class);
+                        future.complete(uipathContext);
+                    }
+                    else
+                        future.fail("Not a json content");
                 }
-
-                logger.debug("Converting Description into java Object + "+description);
-                Gson gson = new GsonBuilder().registerTypeAdapterFactory(new GsonJava8TypeAdapterFactory()).create();
-                QtestContext uipathContext = gson.fromJson(description, QtestContext.class);
-
-                future.complete(uipathContext);
+                else
+                    future.fail("No qtestContext");
             }
             else {
                 qTestProjectName = null;
@@ -144,9 +157,6 @@ public class NeoLoadHttpSyncronizer {
         {
             logger.error("JsonSyntaxExeption - impossible to  deserialize the Qtest context",e);
             future.fail(new NeoLoadException("JsonSyntaxExeption impossible to deserialize the uiPath context"));
-        } catch (InterruptedException e) {
-            logger.error("Forced to wait to get the description  "+e.getMessage(),e);
-            future.fail( new NeoLoadException("Forced to wait to get the description  "+e.getMessage()));
         }
         return future;
     }
@@ -276,7 +286,7 @@ public class NeoLoadHttpSyncronizer {
                 try {
 
                     Long projectid=getProjectID();
-                    String testcylcePid=getTestCycle(projectid);
+                    TestCycleResource  testcylce=getTestCycle(projectid);
                     //get the sla rules
                     resultsApi = new ResultsApi(apiClient);
                     TestResultDefinition testResultDefinition=resultsApi.getTestResult(workspaceid,testid);
@@ -328,7 +338,6 @@ public class NeoLoadHttpSyncronizer {
                             future.fail(new NeoLoadException("Impossilble to retrieve the QtestUser"));
                         }
 
-                        TestLogApi testLogApi= new TestLogApi(qTestApiClient);
 
 
                         AutomationRequest automationRequest =new AutomationRequest();
@@ -348,44 +357,97 @@ public class NeoLoadHttpSyncronizer {
                         testLogResource.setBuildUrl(generateNlTestResultUrl());
                         testLogResource.setActualExeTime(testResultDefinition.getDuration());
 
-                        testLogResource.setTestStepLogs(neoLoadRequirementList.stream().map(neoLoadRequirement -> { return  neoLoadRequirement.toTestLogResult(getSLaGraph(neoLoadRequirement.getElementID(),neoLoadRequirement.getSlakpiDefinition()));}).map(testStepLogResult -> {
-                            return testStepLogResult.toAutomationTestStepLog();
+                        ///---get the required fields to create a defect
+                        List<FieldResource> fieldResourceList=getDefectProperties(projectid);
+
+                        testLogResource.setTestStepLogs(neoLoadRequirementList.stream().map(neoLoadRequirement -> {
+                            if(!neoLoadRequirement.getResult().equalsIgnoreCase("FAILED"))
+                                return  neoLoadRequirement.toTestLogResult(null);
+                            else
+                                return neoLoadRequirement.toTestLogResult(getSLaGraph(neoLoadRequirement.getElementID(),neoLoadRequirement.getSlakpiDefinition()));
+
+                        //#TODO handle the attachments ..waitng for tricentisi return  neoLoadRequirement.toTestLogResult(getSLaGraph(neoLoadRequirement.getElementID(),neoLoadRequirement.getSlakpiDefinition()))
+                            }).map(testStepLogResult -> {
+                                logger.debug("Status of the step "+ testStepLogResult.getResult());
+                                   if(!testStepLogResult.getResult().equalsIgnoreCase("FAILED"))
+                                         return testStepLogResult.toAutomationTestStepLog();
+                                   else
+                                   {
+                                       return testStepLogResult.toAutomationTestStepLogWithDefect(projectid, qTestApiClient,logger,fieldResourceList,scenarioName,relasename);
+                                   }
                         }).collect(Collectors.toList()));
                         testLogResource.setAutomationContent(NEOLOAD);
                         testLogResource.setModuleNames(Arrays.asList(NEOLOAD,projectName,scenarioName));
 
-                        testLogResource.setAttachments(getGraph().stream().map(neoLoadAttachment -> neoLoadAttachment.toAttachment()).collect(Collectors.toList()));
+                      //  testLogResource.setAttachments(getGraph().stream().map(neoLoadAttachment -> neoLoadAttachment.toAttachment()).collect(Collectors.toList()));
                         automationTestLogResourceList.add(testLogResource);
                         automationRequest.setTestLogs(automationTestLogResourceList);
-                        automationRequest.setTestCycle(testcylcePid);
+                        automationRequest.setTestCycle(testcylce.getPid());
                         logger.debug("Going to send the results to qtest : " +automationRequest.toString());
-                        QueueProcessingResponse queueProcessingResponse=testLogApi.submitAutomationTestLogs_0(projectid,automationRequest,"automation",null,String.valueOf(qtestUser.getUserid()));
-
-                        logger.debug("Received the queueProcessingResponse content  "+queueProcessingResponse.getContent() +" and the state "+queueProcessingResponse.getState());
 
 
-                        logger.debug("Updating the neoload project ");
-                        TestResultUpdateRequest testResultUpdateRequest= new TestResultUpdateRequest();
-                        testResultUpdateRequest.setDescription(null);
-                        resultsApi.updateTestResult(testResultUpdateRequest,workspaceid,testid);
-                        logger.debug("The qtest Context has been removed from NeoLoad test result");
 
-                        future.complete(true);
+
+
+
+                        WorkerExecutor workerExecutor=vertx.createSharedWorkerExecutor("Get TestCase");
+                        workerExecutor.executeBlocking(promise -> {
+                                    try {
+                                        String status = getSyncStatus(projectid, automationRequest, String.valueOf(qtestUser.getUserid()));
+                                        if (status.equalsIgnoreCase("FAILED"))
+                                            promise.fail("FAILED");
+                                        else
+                                        {
+                                            //---get the run id
+                                            TestObject testObject=getPrevisouTestLogIds(projectid, testcylce.getId(),NEOLOAD+" Project:"+testResultDefinition.getProject()+ " Scenario:"+testResultDefinition.getScenario(),OffsetDateTime.now());
+                                            if(testObject!=null)
+                                            {
+                                                String url="https://"+qtestApiHost.get()+":"+qtestApiHost.get()+"/p/"+ testObject.getProjectid()+"/portal/project#tab=testexecution&object=3&id="+testObject.getTestrunid();
+                                                promise.complete(url);
+                                            }
+                                        }
+
+                                    } catch (NeoLoadException e) {
+                                        promise.fail(e);
+                                    }
+                                }
+
+                                , asyncResult ->
+                                {
+                                    try {
+                                        if (asyncResult.succeeded()) {
+                                            String url = asyncResult.result().toString();
+                                            logger.debug("Updating the neoload project ");
+                                            TestResultUpdateRequest testResultUpdateRequest = new TestResultUpdateRequest();
+                                            testResultUpdateRequest.setDescription("link to the Qtest execution : " + url);
+                                            resultsApi.updateTestResult(testResultUpdateRequest, workspaceid, testid);
+                                            logger.debug("The qtest Context has been removed from NeoLoad test result");
+                                            future.complete(true);
+                                        } else
+                                            future.fail(asyncResult.cause());
+                                    } catch (ApiException e) {
+                                        logger.error("Api exeption when updating project "+e.getResponseBody(),e);
+                                        future.fail(e);
+                                    }
+
+                                });
+
+
                     }
                 }
                 catch (ApiException e) {
                     logger.error("Unable to retrieve NeoloAD results "+e.getResponseBody(),e);
                     future.fail(e);
-                } catch (QtestApiException e) {
+                } /*catch (QtestApiException e) {
                     logger.error("Unable to retrieve Qtest data "+e.getResponseBody(),e);
                     future.fail(e);
-                } catch (NeoLoadException e) {
+                }*/ catch (NeoLoadException e) {
                     logger.error("Neoload Exeption "+e.getMessage(),e);
                     future.fail(e);
-                } catch (IOException e) {
+                }/* catch (IOException e) {
                     logger.error("Issue when generating attachment ",e);
                     future.fail(e);
-                }
+                }*/
             }
             else
             {
@@ -398,6 +460,73 @@ public class NeoLoadHttpSyncronizer {
 
 
         return future;
+
+    }
+
+
+    private List<FieldResource> getDefectProperties(Long projectid)
+    {
+        FieldApi fieldApi=new FieldApi(qTestApiClient);
+        try
+        {
+            List<FieldResource> fieldResourceList= fieldApi.getFields(projectid,"defects",false);
+            return fieldResourceList;
+        } catch (QtestApiException e) {
+            logger.error("Unable to retrieve the defects fields for the project "+e.getResponseBody(),e);
+        }
+        return null;
+    }
+
+    private TestObject getPrevisouTestLogIds(long projectid, long testcycleId, String executionName, OffsetDateTime rundate) throws NeoLoadException {
+        try
+        {
+            TestRunApi testRunApi=new TestRunApi(qTestApiClient);
+
+            TestRunListResource testRunListResource=testRunApi.getOf(projectid,testcycleId,"test-cycle","descendants",Long.valueOf(1),Long.valueOf(999));
+            List<TestRunWithCustomFieldResource> testRunWithCustomFieldResources=testRunListResource.getItems().stream().filter(testRunWithCustomFieldResource -> testRunWithCustomFieldResource.getName().equalsIgnoreCase(executionName)).sorted((o1, o2) -> o1.getCreatedDate().compareTo(o2.getCreatedDate())).collect(Collectors.toList());
+            testRunWithCustomFieldResources.sort((o1, o2) -> - o1.getCreatedDate().compareTo(o2.getCreatedDate()));
+            Optional<TestObject> testlogids=testRunWithCustomFieldResources.stream().filter(testRunWithCustomFieldResource -> testRunWithCustomFieldResource.getCreatedDate().isBefore(rundate)).map(testrun -> {return new TestObject(projectid,testcycleId,testrun.getLatestTestLog().getId(),testrun.getId());}).findFirst();
+            if(testlogids.isPresent())
+                 return testlogids.get();
+            else
+                return null;
+        } catch (QtestApiException e) {
+            logger.error("QTest api exception "+e.getResponseBody());
+            throw new NeoLoadException("QTest api exception "+e.getResponseBody());
+        }
+    }
+
+    private String getSyncStatus(long projectid,AutomationRequest automationRequest,String  userid) throws NeoLoadException {
+        try {
+
+            TestLogApi testLogApi = new TestLogApi(qTestApiClient);
+            QueueProcessingResponse queueProcessingResponse = testLogApi.submitAutomationTestLogs_0(projectid, automationRequest, "automation", null, userid);
+
+            while(!Arrays.asList("SUCCESS","FAILED").contains(queueProcessingResponse.getState())) {
+                logger.debug("Received the queueProcessingResponse still not finalized  "+queueProcessingResponse.getContent() +" and the state "+queueProcessingResponse.getState());
+
+                Thread.sleep(1000);
+
+                queueProcessingResponse=testLogApi.track(queueProcessingResponse.getId());
+
+
+
+            }
+            logger.debug("Status :"+queueProcessingResponse.getState());
+
+
+            return queueProcessingResponse.getState();
+
+
+
+
+        } catch (QtestApiException e) {
+            logger.error("Unable to interact with qtet api "+e.getResponseBody(),e);
+            throw new NeoLoadException("Unable to interact with qtet api "+e.getResponseBody());
+        } catch (InterruptedException e) {
+            logger.error("Technical InterruptedException "+e.getMessage(),e);
+            throw new NeoLoadException("Technical InterruptedException "+e.getMessage());
+        }
 
     }
 
@@ -442,7 +571,7 @@ public class NeoLoadHttpSyncronizer {
                 testResultRasterConfiguration.setRasterType(TestResultRasterConfiguration.RasterTypeEnum.PNG);
                 testResultRasterConfiguration.setTheme(TestResultRasterConfiguration.ThemeEnum.LIGHT);
                 testResultRasterConfiguration.setWidth(800);
-                testResultRasterConfiguration.setHeight(400);
+                testResultRasterConfiguration.setHeight(600);
                 testResultRasterConfiguration.setLegend(true);
                 testResultRasterConfiguration.setMultiYAxis(false);
                 testResultRasterConfiguration.setYAxisLabel("");
@@ -455,7 +584,7 @@ public class NeoLoadHttpSyncronizer {
                 testResultRasterConfiguration.setRasterType(TestResultRasterConfiguration.RasterTypeEnum.PNG);
                 testResultRasterConfiguration.setTheme(TestResultRasterConfiguration.ThemeEnum.LIGHT);
                 testResultRasterConfiguration.setWidth(800);
-                testResultRasterConfiguration.setHeight(400);
+                testResultRasterConfiguration.setHeight(600);
                 testResultRasterConfiguration.setLegend(true);
                 testResultRasterConfiguration.setMultiYAxis(false);
                 testResultRasterConfiguration.setYAxisLabel("");
@@ -507,7 +636,7 @@ public class NeoLoadHttpSyncronizer {
         testResultRasterConfiguration.setRasterType(TestResultRasterConfiguration.RasterTypeEnum.PNG);
         testResultRasterConfiguration.setTheme(TestResultRasterConfiguration.ThemeEnum.LIGHT);
         testResultRasterConfiguration.setWidth(800);
-        testResultRasterConfiguration.setHeight(400);
+        testResultRasterConfiguration.setHeight(600);
         testResultRasterConfiguration.setLegend(true);
         testResultRasterConfiguration.setMultiYAxis(true);
         testResultRasterConfiguration.setXAxisLabel("Time");
@@ -533,7 +662,7 @@ public class NeoLoadHttpSyncronizer {
         testResultRasterConfiguration.setRasterType(TestResultRasterConfiguration.RasterTypeEnum.PNG);
         testResultRasterConfiguration.setTheme(TestResultRasterConfiguration.ThemeEnum.LIGHT);
         testResultRasterConfiguration.setWidth(600);
-        testResultRasterConfiguration.setHeight(200);
+        testResultRasterConfiguration.setHeight(600);
         testResultRasterConfiguration.setLegend(true);
         testResultRasterConfiguration.setMultiYAxis(false);
         testResultRasterConfiguration.setXAxisLabel("Time");
@@ -561,7 +690,7 @@ public class NeoLoadHttpSyncronizer {
         }
     }
 
-    private String getTestCycle(Long projectid) throws NeoLoadException {
+    private TestCycleResource getTestCycle(Long projectid) throws NeoLoadException {
         TestCycleApi testCycleApi=new TestCycleApi(qTestApiClient);
         ReleaseApi releaseApi=new ReleaseApi(qTestApiClient);
         try {
@@ -577,7 +706,7 @@ public class NeoLoadHttpSyncronizer {
 
                 Optional<TestCycleResource> testCycleResource = testCycleResourceList.stream().filter(testCycle -> testCycle.getName().equalsIgnoreCase(qtesttestCycle)).findFirst();
                 if (testCycleResource.isPresent()) {
-                    return testCycleResource.get().getPid();
+                    return testCycleResource.get();
                 } else
                     throw new NeoLoadException("No Test Cycle found with the name " + qtesttestCycle);
             }
