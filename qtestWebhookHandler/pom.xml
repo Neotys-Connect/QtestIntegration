@@ -14,7 +14,7 @@
     <properties>
         <java.version>1.8</java.version>
         <tag>0.1</tag>
-        <dockerimage>docker.io/hrexed/neoload_qtestresultsync</dockerimage>
+        <dockerimage>docker.io/neotyspartnersolution/neoload_qtestresultsync</dockerimage>
         <NL_WEB_HOST>neoload.saas.com</NL_WEB_HOST>
         <NL_API_HOST>neoload-api.saas.com</NL_API_HOST>
         <NL_API_TOKEN>yourtoken</NL_API_TOKEN>

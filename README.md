@@ -61,7 +61,7 @@ The Qtest Population would need to be added to your NeoLoad scenario with the fo
 ## WebHook Handler
 
 ### Configuration
-The webhook handler is a web service package in a container : `hrexed/neoload_qtestresultsync`
+The webhook handler is a web service package in a container : `neotyspartnersolution/neoload_qtestresultsync`
 The container will required different type of Environment variables to connect the service to Qtest and NeoLoad Web
 
 To be able to import NeoLoad test results you will need to specify :

@@ -3,7 +3,7 @@ version: '2'
 services:
   NeoLoad-WebHookHandler:
     container_name: WebHookHandler
-    image: hrexed/neoload_qtestresultsync:latest
+    image: neotyspartnersolution/neoload_qtestresultsync:latest
     ports:
     - "8080:8080"
     environment:

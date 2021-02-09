@@ -22,7 +22,7 @@ public class SendQtestContextAction implements Action {
 
     @Override
     public String getType() {
-        return "SendUiPathContext";
+        return "SendQtestContext";
     }
 
     @Override
@@ -57,7 +57,7 @@ public class SendQtestContextAction implements Action {
 
     @Override
     public String getDescription() {
-        return "Send the UiPath Context to NeoLoad WEB ( required to push the results in UiPath Test Manager).\n\n" + Arguments.getArgumentDescriptions(QtestContextOption.values());
+        return "Send the Qtest Context to NeoLoad WEB ( required to push the results in Qtest).\n\n" + Arguments.getArgumentDescriptions(QtestContextOption.values());
 
     }
 

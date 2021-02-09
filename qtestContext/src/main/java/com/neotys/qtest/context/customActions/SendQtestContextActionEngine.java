@@ -26,9 +26,9 @@ import static com.neotys.action.argument.Arguments.parseArguments;
 public class SendQtestContextActionEngine implements ActionEngine {
 
 
-    private static final String STATUS_CODE_INVALID_PARAMETER = "NL-UIPATH-SENDCONTEXT_ACTION-01";
-    private static final String STATUS_CODE_TECHNICAL_ERROR = "NL-UIPATH-SENDCONTEXT_ACTION-02";
-    private static final String STATUS_CODE_BAD_CONTEXT = "NL-UIPATH-SENDCONTEXT_ACTION-03";
+    private static final String STATUS_CODE_INVALID_PARAMETER = "NL-QTEST-SENDCONTEXT_ACTION-01";
+    private static final String STATUS_CODE_TECHNICAL_ERROR = "NL-QTEST-SENDCONTEXT_ACTION-02";
+    private static final String STATUS_CODE_BAD_CONTEXT = "NL-QTEST-SENDCONTEXT_ACTION-03";
     private static final String NLWEB_VERSION ="v3" ;
 
     public SampleResult execute(Context context, List<ActionParameter> parameters) {
@@ -77,11 +77,11 @@ public class SendQtestContextActionEngine implements ActionEngine {
             appendLineToStringBuilder(responseBuilder, description);
 
         }catch (ApiException e) {
-            return ResultFactory.newErrorResult(context, STATUS_CODE_TECHNICAL_ERROR, "UIPath Send context Api Error - API Exception "+e.getResponseBody(), e);
+            return ResultFactory.newErrorResult(context, STATUS_CODE_TECHNICAL_ERROR, "Qtest Send context Api Error - API Exception "+e.getResponseBody(), e);
         }
         catch (Exception e)
         {
-            return ResultFactory.newErrorResult(context, STATUS_CODE_TECHNICAL_ERROR, "UIPath Send context technical Error  ", e);
+            return ResultFactory.newErrorResult(context, STATUS_CODE_TECHNICAL_ERROR, "Qtest Send context technical Error  ", e);
 
         }
 
@@ -112,7 +112,7 @@ public class SendQtestContextActionEngine implements ActionEngine {
      */
     private static SampleResult getErrorResult(final Context context, final SampleResult result, final String errorMessage, final Exception exception) {
         result.setError(true);
-        result.setStatusCode("NL-UIPATH_ERROR");
+        result.setStatusCode("NL-QTEST_ERROR");
         result.setResponseContent(errorMessage);
         if (exception != null) {
             context.getLogger().error(errorMessage, exception);
