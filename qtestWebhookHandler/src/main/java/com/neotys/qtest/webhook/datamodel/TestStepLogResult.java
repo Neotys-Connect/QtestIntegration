@@ -170,6 +170,8 @@ public class TestStepLogResult {
                     linkedDefectResource.setPid(defectcrated.getPid());
                     linkedDefectResource.setId(defectcrated.getId());
                     automationTestStepLog.setDefects(Arrays.asList(linkedDefectResource));
+
+
                 }
             }
             else

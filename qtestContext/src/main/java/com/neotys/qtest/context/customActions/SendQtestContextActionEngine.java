@@ -47,7 +47,16 @@ public class SendQtestContextActionEngine implements ActionEngine {
         final String project = parsedArgs.get(QtestContextOption.ProjectName.getName()).get();
         final String testcycle=parsedArgs.get(QtestContextOption.TestCycle.getName()).get();
         final String releasename=parsedArgs.get(QtestContextOption.ReleaseName.getName()).get();
+        final Optional<String> enableDefectCreation = parsedArgs.get(QtestContextOption.EnableDefectCreation.getName());
 
+
+        boolean defectcreation;
+        if(!enableDefectCreation.isPresent())
+            defectcreation=false;
+        else
+        {
+            defectcreation=Boolean.valueOf(enableDefectCreation.get());
+        }
         final Logger logger = context.getLogger();
         if (logger.isDebugEnabled()) {
             logger.debug("Executing " + this.getClass().getName() + " with parameters: "
@@ -69,7 +78,7 @@ public class SendQtestContextActionEngine implements ActionEngine {
 
 
 
-            QtestContext uiPathContext=new QtestContext(project,testcycle,releasename);
+            QtestContext uiPathContext=new QtestContext(project,testcycle,releasename,defectcreation);
             String description=gson.toJson(uiPathContext);
 
             testUpdateRequest.setDescription(description);

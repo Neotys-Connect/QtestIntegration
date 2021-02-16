@@ -36,6 +36,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 import static com.neotys.qtest.webhook.common.Constants.*;
+import static javax.management.remote.JMXConnectionNotification.FAILED;
 
 
 public class NeoLoadHttpSyncronizer {
@@ -373,7 +374,10 @@ public class NeoLoadHttpSyncronizer {
                                          return testStepLogResult.toAutomationTestStepLog();
                                    else
                                    {
-                                       return testStepLogResult.toAutomationTestStepLogWithDefect(projectid, qTestApiClient,logger,fieldResourceList,scenarioName,relasename);
+                                       if(qtestContext.isEnableDefectCreation())
+                                           return testStepLogResult.toAutomationTestStepLogWithDefect(projectid, qTestApiClient,logger,fieldResourceList,scenarioName,relasename);
+                                        else return testStepLogResult.toAutomationTestStepLog();
+
                                    }
                         }).collect(Collectors.toList()));
                         testLogResource.setAutomationContent(NEOLOAD);
@@ -402,7 +406,9 @@ public class NeoLoadHttpSyncronizer {
                                             TestObject testObject=getPrevisouTestLogIds(projectid, testcylce.getId(),NEOLOAD+" Project:"+testResultDefinition.getProject()+ " Scenario:"+testResultDefinition.getScenario(),OffsetDateTime.now());
                                             if(testObject!=null)
                                             {
-                                                String url="https://"+qtestApiHost.get()+":"+qtestApiHost.get()+"/p/"+ testObject.getProjectid()+"/portal/project#tab=testexecution&object=3&id="+testObject.getTestrunid();
+                                                String url="https://"+qtestApiHost.get()+":"+qtestApiport.get()+"/p/"+ testObject.getProjectid()+"/portal/project#tab=testexecution&object=3&id="+testObject.getTestrunid();
+                                                if(qtestContext.isEnableDefectCreation())
+                                                    attachDefectsToTestLogs(testObject,automationRequest);
                                                 promise.complete(url);
                                             }
                                         }
@@ -463,6 +469,30 @@ public class NeoLoadHttpSyncronizer {
 
     }
 
+    private void attachDefectsToTestLogs(TestObject testObject,AutomationRequest automationRequest)
+    {
+        TestLogApi testLogApi=new TestLogApi(qTestApiClient);
+        ObjectLinkApi objectLinkApi=new ObjectLinkApi(qTestApiClient);
+        try
+        {
+            TestLogResource testLogResource=testLogApi.getLastRunLog(testObject.getProjectid(),testObject.getTestrunid(),"test-steps");
+            testLogResource.getTestStepLogs().stream().filter(testStepLogResource -> testStepLogResource.getStatus().getName().equalsIgnoreCase(NEOLOAD_FAIL_STATUS)).forEach(testStepLogResource -> {
+                automationRequest.getTestLogs().stream().forEach(automationTestLogResource -> automationTestLogResource.getTestStepLogs().stream().filter(automationTestStepLog -> automationTestStepLog.getStatus().equalsIgnoreCase(JIRA_FAIL_STATUS)).filter(automationTestStepLog -> automationTestStepLog.getDescription().equalsIgnoreCase(testStepLogResource.getDescription()) && (automationTestStepLog.getOrder()+1)==testStepLogResource.getOrder()).forEach(automationTestStepLog -> {
+                    ///Get defects and attache them
+                    automationTestStepLog.getDefects().forEach(linkedDefectResource -> {
+                        try {
+                            objectLinkApi.linkArtifacts(testObject.getProjectid(),"test-steps","defects",Arrays.asList(linkedDefectResource.getId()),testStepLogResource.getTestStepLogId());
+                        } catch (QtestApiException e) {
+                            logger.error("Unable to attach defect to test step id "+e.getResponseBody(),e);
+                        }
+                    });
+                }));
+            });
+
+        } catch (QtestApiException e) {
+            logger.error("Unable to get the TestLogRessource of the last test "+e.getResponseBody(),e);
+        }
+    }
 
     private List<FieldResource> getDefectProperties(Long projectid)
     {

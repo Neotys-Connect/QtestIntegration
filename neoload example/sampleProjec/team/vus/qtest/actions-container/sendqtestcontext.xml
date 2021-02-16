@@ -1,11 +1,15 @@
-<custom-action actionType="SendUiPathContext" isHit="true"
-    name="sendqtestcontext" uid="e6313236-fb7e-474d-9331-2aa4fb90a880">
-    <description>Send the UiPath Context to NeoLoad WEB ( required to push the results in UiPath Test Manager).
+<custom-action actionType="SendQtestContext" isHit="true"
+    name="sendqtestcontext" uid="07d8a922-7ebd-4189-a1e2-2b5074f5aec9">
+    <description>Send the Qtest Context to NeoLoad WEB ( required to push the results in Qtest).
 
 Possible parameters are:&#xd;
-- ProjectId (required): Project name in UiPath Test Manager Default value is "Project name in UiPath Test Manager".</description>
+- ProjectName (required): Project name in UiPath Test Manager Default value is "Project name in UiPath Test Manager".&#xd;
+- TestCycle (required): Test Cylce name Default value is "Test Cycle Name".&#xd;
+- ReleaseName (required): Release Name Default value is "Release Name".&#xd;
+- EnableDefectCreation (optional): Enable the creation of defects if an SLA Fails Default value is "false".&#xd;
+</description>
     <custom-action-parameter name="ProjectName" type="TEXT" value="qConnect - Sample Project"/>
     <custom-action-parameter name="TestCycle" type="TEXT" value="Cycle 3.2"/>
     <custom-action-parameter name="ReleaseName" type="TEXT" value="Release 3"/>
-    <responsePageFileDescription>recorded-responses/res_e6313236-fb7e-474d-9331-2aa4fb90a880</responsePageFileDescription>
+    <custom-action-parameter name="EnableDefectCreation" type="TEXT" value="true"/>
 </custom-action>

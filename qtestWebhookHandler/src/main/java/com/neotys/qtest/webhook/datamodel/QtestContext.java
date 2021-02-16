@@ -4,6 +4,8 @@ public class QtestContext {
     String projectName;
     String testcycle;
     String releasename;
+    boolean enableDefectCreation;
+
 
     public String getProjectName() {
         return projectName;
@@ -13,11 +15,12 @@ public class QtestContext {
         this.projectName = projectName;
     }
 
-    public QtestContext(String projectName,String testcycle,String releasename)
+    public QtestContext(String projectName,String testcycle,String releasename,boolean enableDefectCreation)
     {
         this.projectName = projectName;
         this.testcycle=testcycle;
         this.releasename=releasename;
+        this.enableDefectCreation=enableDefectCreation;
     }
 
     public String getReleasename() {
@@ -34,5 +37,13 @@ public class QtestContext {
 
     public void setTestcycle(String testcycle) {
         this.testcycle = testcycle;
+    }
+
+    public boolean isEnableDefectCreation() {
+        return enableDefectCreation;
+    }
+
+    public void setEnableDefectCreation(boolean enableDefectCreation) {
+        this.enableDefectCreation = enableDefectCreation;
     }
 }
