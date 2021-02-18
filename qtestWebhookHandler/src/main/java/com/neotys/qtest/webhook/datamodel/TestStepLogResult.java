@@ -210,6 +210,12 @@ public class TestStepLogResult {
             propertyResourceList.add(propertyReleaseTarget);
 
 
+        PropertyResource propertyCategory=getReleaseProperty(fieldResourceList,logger,"Performance","Category");
+        if(propertyReleaseTarget!=null)
+            propertyResourceList.add(propertyReleaseTarget);
+
+
+
         return propertyResourceList;
     }
 
@@ -298,12 +304,14 @@ public class TestStepLogResult {
                 propertyResource=setPropertieValue(propertyResource,fieldResource.getAllowedValues(),"Undecided", logger);
             }
 
-            if(fieldResource.getOriginalName().equalsIgnoreCase("Type"))
-            {
-                propertyResource=setPropertieValue(propertyResource,fieldResource.getAllowedValues(),"Other", logger);
-            }
 
 
+
+        }
+
+        if(fieldResource.getOriginalName().equalsIgnoreCase("Type"))
+        {
+            propertyResource=setPropertieValue(propertyResource,fieldResource.getAllowedValues(),"Other", logger);
         }
 
 

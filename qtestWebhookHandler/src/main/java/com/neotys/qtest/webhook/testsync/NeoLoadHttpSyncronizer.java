@@ -477,7 +477,7 @@ public class NeoLoadHttpSyncronizer {
         {
             TestLogResource testLogResource=testLogApi.getLastRunLog(testObject.getProjectid(),testObject.getTestrunid(),"test-steps");
             testLogResource.getTestStepLogs().stream().filter(testStepLogResource -> testStepLogResource.getStatus().getName().equalsIgnoreCase(NEOLOAD_FAIL_STATUS)).forEach(testStepLogResource -> {
-                automationRequest.getTestLogs().stream().forEach(automationTestLogResource -> automationTestLogResource.getTestStepLogs().stream().filter(automationTestStepLog -> automationTestStepLog.getStatus().equalsIgnoreCase(JIRA_FAIL_STATUS)).filter(automationTestStepLog -> automationTestStepLog.getDescription().equalsIgnoreCase(testStepLogResource.getDescription()) && (automationTestStepLog.getOrder()+1)==testStepLogResource.getOrder()).forEach(automationTestStepLog -> {
+                automationRequest.getTestLogs().stream().forEach(automationTestLogResource -> automationTestLogResource.getTestStepLogs().stream().filter(automationTestStepLog -> automationTestStepLog.getStatus().equalsIgnoreCase(JIRA_FAIL_STATUS)).filter(automationTestStepLog -> automationTestStepLog.getDescription().toUpperCase().equalsIgnoreCase(testStepLogResource.getDescription().toUpperCase()) && (automationTestStepLog.getOrder()+1)==testStepLogResource.getOrder()).forEach(automationTestStepLog -> {
                     ///Get defects and attache them
                     automationTestStepLog.getDefects().forEach(linkedDefectResource -> {
                         try {

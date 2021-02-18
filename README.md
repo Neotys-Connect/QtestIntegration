@@ -28,7 +28,7 @@ QtestContext will update the test results in NeoLoad web with all the informatio
 1. Download the [latest release]() for NeoLoad from version 7.6
 1. Read the NeoLoad documentation to see [How to install a custom Advanced Action](https://www.neotys.com/documents/doc/neoload/latest/en/html/#25928.htm).
 
-<p align="center"><img src="/screenshots/custom_action.png" alt="QtestContext Advanced Action" /></p>
+<p align="center"><img src="/screenshot/action.png" alt="QtestContext Advanced Action" /></p>
 
 ### NeoLoad Set-up
 
@@ -36,25 +36,30 @@ Once installed, how to use in a given NeoLoad project:
 
 1. Create a `QtestContext` User Path.
 1. Insert `QtestContext` in the `Action` block.
-<p align="center"><img src="/screenshots/vu2.png" alt="QtestContext User Path" /></p>
 1. Create a `QtestContext` User Path.
 1. Insert `QtestContext` in the `Action` block.
-<p align="center"><img src="/screenshots/vu.png" alt="QtestContext User Path" /></p>
+<p align="center"><img src="/screenshot/vu.png" alt="QtestContext User Path" /></p>
 
 
 1. Create a NeoLoad Population Qtest having only the userPath QtestContext
-<p align="center"><img src="/screenshots/population.png" alt="QtestContext Population" /></p>
+<p align="center"><img src="/screenshot/population.png" alt="QtestContext Population" /></p>
 1. Create a NeoLoad Scenario Using your population and the Qtest Population
 The Qtest Population would need to be added to your NeoLoad scenario with the following settings :
 * Duration : iteration
 * Load Policy : Constant : 1 user doing 1 iteration
-<p align="center"><img src="/screenshots/scenario.png" alt="Qtest scenario" /></p>
+<p align="center"><img src="/screenshot/runtime.png" alt="Qtest scenario" /></p>
 
 ### Parameters for QtestContext
    
 | Name             | Description |
 | -----            | ----- |
-| `ProjectId`      | Identifier of your project key in Qtest |
+| `ProjectName`      | Identifier of your project name in Qtest |
+| `TestCycle`      | Identifier of your existing test cycle ( needs to exist in your qtest project |
+| `ReleaseName`      | Identifier of your release name ( needs to exists in your qtest projedct)  |
+| `EnableDefectCreation`      | Optionnal - Default Value false. This property will automatically create defect if one of the NeoLoad SLA has failed |
+
+
+
 
 
 
@@ -120,4 +125,25 @@ To configure the webhook in NeoLoad WEB you will need to :
   "testid": "$(test_result_id)"
 }
 ```
-<p align="center"><img src="/screenshots/webhook.png" alt="QTEST webhok" /></p>
+<p align="center"><img src="/screenshot/screenshot-neoload-saas-neotys-com-1613662206254.png" alt="QTEST webhok" /></p>
+
+## What would be created in Qtest
+
+The qtest integration will automatically create the following things in your Qtest project , Release, Test Cycle :
+
+### Test case and test case detail
+After the test execution the integration will create the test case with the name of your :
+- neoload project
+- neoload scenario
+<p align="center"><img src="/screenshot/qtest_testcasedetails.png" alt="QTEST webhok" /></p>
+
+### Test execution result
+<p align="center"><img src="/screenshot/qtest_execution.png" alt="QTEST webhok" /></p>
+
+
+### Defects ( if the EnableDefectCreation ( QtestContext ) is enabled)
+<p align="center"><img src="/screenshot/qtest_defects.png" alt="QTEST webhok" /></p>
+
+The integration will generate a image (.png) of each SLA that has failed during the test.
+This image will be added as an attachment in the defect to illustrate the issue :
+<p align="center"><img src="/screenshot/qtest_defects_detail.png" alt="QTEST webhok" /></p>
